@@ -2,21 +2,32 @@
     display: flex;
     flex-flow: column;
     width: 100vw;
-    height: 90vw;
     justify-content: center;
     text-align: center;
+    color: aliceblue;
+
+    &__label {
+        font-size: 1.2rem;
+    }
 
     &__header {
         margin-bottom: 1rem;
     }
 
     &__input {
+        height:30px;
         width: 30%;
         margin: 0 auto 1rem auto;
+        padding: 10px;
     }
 
     &__submit {
         width: 20%;
         margin: 0 auto;
+        border: none;
+        background: none;
+        font-size: 1rem;
+        cursor: pointer;
+        color: aliceblue;
     }
 }
