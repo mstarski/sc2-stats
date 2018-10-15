@@ -1,33 +1,23 @@
-.login-form {
+.login-wrapper {
+    width: 100vw;
+    height: 300px;
+    margin: auto;
     display: flex;
     flex-flow: column;
-    width: 100vw;
     justify-content: center;
-    text-align: center;
-    color: aliceblue;
+    align-items: center;
+    color: whitesmoke;
 
-    &__label {
-        font-size: 1.2rem;
-    }
+    &__button {
+        display: flex;
+        align-items: center;
+        background: rgb(27, 39, 53);
+        color: whitesmoke;
+        margin-top: 1rem;
 
-    &__header {
-        margin-bottom: 1rem;
-    }
-
-    &__input {
-        height:30px;
-        width: 30%;
-        margin: 0 auto 1rem auto;
-        padding: 10px;
-    }
-
-    &__submit {
-        width: 20%;
-        margin: 0 auto;
-        border: none;
-        background: none;
-        font-size: 1rem;
-        cursor: pointer;
-        color: aliceblue;
+        & > span {
+            font-size: 1.5rem;
+            padding: 10px;
+        }
     }
 }
