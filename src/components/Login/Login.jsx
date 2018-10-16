@@ -10,7 +10,7 @@ class Login extends React.Component {
     }
 
     submitHandler() {
-
+        alert('Working!');
     }
 
     render() {
@@ -19,7 +19,7 @@ class Login extends React.Component {
                 <Background src={LoginBg} ></Background>
                 <div className="login-wrapper">
                     <h1 className="login-wrapper__header">Welcome to Starcraft II Statistics</h1>
-                    <button className="login-wrapper__button"><img style={{ width: "50px" }} src={BattlenetIcon} alt="battle.net" /><span>Log in with battle.net</span></button>
+                    <button onClick={this.submitHandler} className="login-wrapper__button"><img style={{ width: "50px" }} src={BattlenetIcon} alt="battle.net" /><span>Log in with battle.net</span></button>
                 </div>
             </React.Fragment>
         )
