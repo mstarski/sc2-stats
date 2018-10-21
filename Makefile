@@ -17,7 +17,7 @@ fonts:
 start: 
 	npm run start
 
-build: 
+build: install
 	npm run build
 
 watch: 
