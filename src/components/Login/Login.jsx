@@ -2,6 +2,7 @@ const React = require('react');
 const Background = require('../Background/Background');
 const LoginBg = require('../../../assets/login-bg.jpg');
 const BattlenetIcon = require('../../../assets/battlenet-icon.png');
+const { ipcRenderer } = window.require('electron');
 
 class Login extends React.Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class Login extends React.Component {
     }
 
     submitHandler() {
-        alert('Working!');
+        ipcRenderer.send('auth');
     }
 
     render() {

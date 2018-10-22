@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build": "parcel build --no-source-maps --public-url ./ src/index.html",
-    "watch": "parcel watch --no-hmr --public-url ./ src/index.html"
+    "build": "parcel build --no-source-maps --public-url ./ src/screens/*.html",
+    "watch": "parcel watch --no-hmr --public-url ./ src/screens/*.html"
   },
   "author": "Michal Starski",
   "license": "MIT",
@@ -17,6 +17,7 @@
     "electron-devtools-installer": "^2.2.4"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "event-emitter": "^0.3.5",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
