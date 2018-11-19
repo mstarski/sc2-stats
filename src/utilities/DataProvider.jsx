@@ -19,13 +19,12 @@ class DataProvider extends React.Component {
 		} catch (error) {
 			throw new Error(`Failed to fetch: \n${error}`);
 		}
-
-		await this.setState({ data: data });
+		await this.setState({ data });
 		return 0;
 	}
 
 	render() {
-		return React.cloneElement(this.props.children, { ...this.state.data });
+		return React.cloneElement(this.props.children, { ...this.state });
 	}
 }
 
