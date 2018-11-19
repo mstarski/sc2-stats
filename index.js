@@ -1,6 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const { resolve } = require("path");
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
@@ -33,6 +32,20 @@ function createWindow() {
 		// when you should delete the corresponding element.
 		win = null;
 	});
+
+	//React devtools
+	const {
+		default: installExtension,
+		REACT_DEVELOPER_TOOLS,
+	} = require("electron-devtools-installer");
+
+	installExtension(REACT_DEVELOPER_TOOLS)
+		.then(name => {
+			console.log(`Added Extension:  ${name}`);
+		})
+		.catch(err => {
+			console.log("An error occurred: ", err);
+		});
 }
 
 // This method will be called when Electron has finished

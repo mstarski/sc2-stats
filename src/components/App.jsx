@@ -29,7 +29,12 @@ class App extends React.Component {
 					<Route
 						path="/dashboard"
 						render={() => (
-							<DataProvider>
+							<DataProvider
+								region="eu"
+								dataSource={`/player/${localStorage.getItem(
+									"id"
+								)}`}
+							>
 								<Dashboard />
 							</DataProvider>
 						)}

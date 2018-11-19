@@ -4,7 +4,7 @@ const axios = require("axios");
 const custom = (region, token) =>
 	axios.create({
 		baseURL: `https://${region}.api.blizzard.com/sc2`,
-		headers: { Authorization: `Bearer: ${token}` },
+		headers: { Authorization: `Bearer ${token}` },
 	});
 
 module.exports = custom;

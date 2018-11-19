@@ -1,6 +1,5 @@
 const React = require("react");
-const requestConfig = require("../utilities/custom-axios");
-const axios = require("axios");
+const request = require("../utilities/custom-axios");
 
 class DataProvider extends React.Component {
 	constructor(props) {
@@ -12,11 +11,17 @@ class DataProvider extends React.Component {
 	}
 
 	async componentDidMount() {
-		// const { dataSource, region } = this.props;
-		// const { data } = await axios(dataSource, requestConfig);
-		// await this.setState({ data });
-		// console.log(data);
-		// return 0;
+		const { dataSource, region } = this.props;
+		try {
+			var { data } = await request(region, localStorage.getItem("token"))(
+				dataSource
+			);
+		} catch (error) {
+			throw new Error(`Failed to fetch: \n${error}`);
+		}
+
+		await this.setState({ data: data });
+		return 0;
 	}
 
 	render() {
