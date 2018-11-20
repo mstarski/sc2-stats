@@ -18,6 +18,7 @@ function AccountThumbnail(props) {
 			marginLeft={20}
 			cursor="pointer"
 			className="thumbnail"
+			onClick={props.onClick}
 		>
 			<Avatar
 				src={avatar}

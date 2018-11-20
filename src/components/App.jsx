@@ -5,7 +5,7 @@ const { ipcRenderer } = window.require("electron");
 
 //Components
 const Login = require("./Login/Login");
-const Dashboard = require("./Dashboard/Dashboard");
+const ChooseProfile = require("./ChooseProfile/ChooseProfile");
 const DataProvider = require("../utilities/DataProvider");
 
 class App extends React.Component {
@@ -19,15 +19,16 @@ class App extends React.Component {
 			Object.keys(playerData).forEach(key => {
 				localStorage.setItem(key, playerData[key]);
 			});
-			this.props.history.push("/dashboard");
+			this.props.history.push("/choose-profile");
 		});
 
 		return (
 			<React.Fragment>
 				<Switch>
-					<Route path="/login" component={Login} />
+					<Route exact path="/login" component={Login} />
 					<Route
-						path="/dashboard"
+						exact
+						path="/choose-profile"
 						render={() => (
 							<DataProvider
 								region="eu"
@@ -35,10 +36,11 @@ class App extends React.Component {
 									"id"
 								)}`}
 							>
-								<Dashboard />
+								<ChooseProfile />
 							</DataProvider>
 						)}
 					/>
+					<Route exact path="/profile" />
 					<Redirect to="/login" />
 				</Switch>
 			</React.Fragment>

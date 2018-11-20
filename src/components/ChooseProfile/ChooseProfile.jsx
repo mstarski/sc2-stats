@@ -1,15 +1,22 @@
 //Packages
 const React = require("react");
 const { Pane, Text, Heading } = require("evergreen-ui");
+const { withRouter } = require("react-router-dom");
 
 //Components
 const AccountThumbnail = require("../../dumb-components/AccountThumbnail/AccountThumbnail.jsx");
 const Translator = require("../../utilities/Translator");
 const Loader = require("../../dumb-components/Loader/Loader");
 
-class Dashboard extends React.Component {
+class ChooseProfile extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.selectionHandler = this.selectionHandler.bind(this);
+	}
+
+	selectionHandler() {
+		this.props.history.push("/login");
 	}
 
 	render() {
@@ -19,10 +26,11 @@ class Dashboard extends React.Component {
 			thumbnails: {
 				condition: data && !error && !loading,
 				component: (
-					<div className="dashboard__profiles_grid">
+					<div key={1} className="dashboard__profiles_grid">
 						{(data || []).map(profile => {
 							return (
 								<AccountThumbnail
+									onClick={this.selectionHandler}
 									key={profile.profileId}
 									profile_name={profile.name}
 									avatar={profile.avatarUrl}
@@ -39,7 +47,7 @@ class Dashboard extends React.Component {
 			error: {
 				condition: !data && !loading && error,
 				component: (
-					<Pane>
+					<Pane key={2}>
 						<Heading is={"h2"} size={700}>
 							Oops - something went wrong !
 						</Heading>
@@ -49,7 +57,7 @@ class Dashboard extends React.Component {
 			},
 			loading: {
 				condition: !data && !error && loading,
-				component: <Loader />,
+				component: <Loader key={3} />,
 			},
 		};
 
@@ -75,4 +83,4 @@ class Dashboard extends React.Component {
 	}
 }
 
-module.exports = Dashboard;
+module.exports = withRouter(ChooseProfile);
