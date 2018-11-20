@@ -16,7 +16,7 @@ class ChooseProfile extends React.Component {
 	}
 
 	selectionHandler() {
-		this.props.history.push("/login");
+		this.props.history.push("/dashboard");
 	}
 
 	render() {

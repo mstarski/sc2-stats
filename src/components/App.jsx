@@ -7,6 +7,7 @@ const { ipcRenderer } = window.require("electron");
 const Login = require("./Login/Login");
 const ChooseProfile = require("./ChooseProfile/ChooseProfile");
 const DataProvider = require("../utilities/DataProvider");
+const Dashboard = require("./Dashboard/Dashboard");
 
 class App extends React.Component {
 	constructor(props) {
@@ -40,7 +41,7 @@ class App extends React.Component {
 							</DataProvider>
 						)}
 					/>
-					<Route exact path="/profile" />
+					<Route exact path="/dashboard" component={Dashboard} />
 					<Redirect to="/login" />
 				</Switch>
 			</React.Fragment>
