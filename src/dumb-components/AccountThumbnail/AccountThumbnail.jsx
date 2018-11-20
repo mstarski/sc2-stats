@@ -15,7 +15,9 @@ function AccountThumbnail(props) {
 			width={"20vw"}
 			height={"20vw"}
 			background="tint1"
-			marginLeft={10}
+			marginLeft={20}
+			cursor="pointer"
+			className="thumbnail"
 		>
 			<Avatar
 				src={avatar}
