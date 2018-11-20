@@ -1,15 +1,15 @@
-@import 'src/components/Login/Login';
-@import 'webfonts';
+@import "src/components/Login/Login";
+@import "src/components/Dashboard/Dashboard";
+@import "webfonts";
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Roboto", sans-serif;
 }
 
-
 #root {
-    min-height: 100vh;
-    display: flex;
+	min-height: 100vh;
+	display: flex;
 }
