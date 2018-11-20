@@ -1,0 +1,14 @@
+.dashboard {
+	margin: auto;
+
+	&__profiles_grid {
+		display: flex;
+	}
+
+	.thumbnail {
+		transition: 0.2s all ease-in-out;
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+}
