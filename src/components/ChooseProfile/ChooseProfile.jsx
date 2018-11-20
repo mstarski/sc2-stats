@@ -15,7 +15,16 @@ class ChooseProfile extends React.Component {
 		this.selectionHandler = this.selectionHandler.bind(this);
 	}
 
-	selectionHandler() {
+	selectionHandler(regionId, realmId, profileId) {
+		const params = new Object({
+			realmId,
+			regionId,
+			profileId,
+			region: Translator.idsToName(regionId, realmId).toLowerCase(),
+		});
+		Object.keys(params).map(param => {
+			localStorage.setItem(param, params[param]);
+		});
 		this.props.history.push("/dashboard");
 	}
 
@@ -30,7 +39,13 @@ class ChooseProfile extends React.Component {
 						{(data || []).map(profile => {
 							return (
 								<AccountThumbnail
-									onClick={this.selectionHandler}
+									onClick={() =>
+										this.selectionHandler(
+											profile.regionId,
+											profile.realmId,
+											profile.profileId
+										)
+									}
 									key={profile.profileId}
 									profile_name={profile.name}
 									avatar={profile.avatarUrl}
@@ -60,8 +75,6 @@ class ChooseProfile extends React.Component {
 				component: <Loader key={3} />,
 			},
 		};
-
-		console.log(data);
 		return (
 			<div className="dashboard">
 				<Heading

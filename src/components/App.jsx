@@ -41,7 +41,22 @@ class App extends React.Component {
 							</DataProvider>
 						)}
 					/>
-					<Route exact path="/dashboard" component={Dashboard} />
+					<Route
+						exact
+						path="/dashboard"
+						render={() => (
+							<DataProvider
+								region={localStorage.getItem("region")}
+								dataSource={`profile/${localStorage.getItem(
+									"regionId"
+								)}/${localStorage.getItem(
+									"realmId"
+								)}/${localStorage.getItem("profileId")}`}
+							>
+								<Dashboard />
+							</DataProvider>
+						)}
+					/>
 					<Redirect to="/login" />
 				</Switch>
 			</React.Fragment>
