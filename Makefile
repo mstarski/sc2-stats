@@ -25,3 +25,6 @@ watch:
 
 clean:
 	rm -rf fonts .cache
+
+auth:
+	node bnet-authenticator/index.js
