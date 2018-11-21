@@ -31,9 +31,9 @@ class Dashboard extends React.Component {
 				<React.Fragment>
 					<Pane width={"100vw"} marginTop={50} padding={20} key={1}>
 						<Avatar
-							// src={data.summary.portrait}
+							src={data.summary.portrait}
 							alt="profile_portrait"
-							// name={data.summary.displayName}
+							name={data.summary.displayName}
 							size={100}
 							marginLeft={50}
 						/>
@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
 					<Pane display="grid" width={"100vw"} height={"62.2vh"}>
 						<Pane paddingLeft={85}>
 							<Heading is={"h2"} size={600}>
-								{/* {data.summary.displayName} */}
+								{data.summary.displayName}
 							</Heading>
 						</Pane>
 					</Pane>
