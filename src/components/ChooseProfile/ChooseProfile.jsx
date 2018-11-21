@@ -29,52 +29,7 @@ class ChooseProfile extends React.Component {
 	}
 
 	render() {
-		const { data, error, loading } = this.props;
-
-		const conditionalRender = {
-			thumbnails: {
-				condition: data && !error && !loading,
-				component: (
-					<div key={1} className="dashboard__profiles_grid">
-						{(data || []).map(profile => {
-							return (
-								<AccountThumbnail
-									onClick={() =>
-										this.selectionHandler(
-											profile.regionId,
-											profile.realmId,
-											profile.profileId
-										)
-									}
-									key={profile.profileId}
-									profile_name={profile.name}
-									avatar={profile.avatarUrl}
-									region={Translator.idsToName(
-										profile.regionId,
-										profile.realmId
-									)}
-								/>
-							);
-						})}
-					</div>
-				),
-			},
-			error: {
-				condition: !data && !loading && error,
-				component: (
-					<Pane key={2}>
-						<Heading is={"h2"} size={700}>
-							Oops - something went wrong !
-						</Heading>
-						<Text>{this.props.error}</Text>
-					</Pane>
-				),
-			},
-			loading: {
-				condition: !data && !error && loading,
-				component: <Loader key={3} />,
-			},
-		};
+		const { data } = this.props;
 		return (
 			<div className="dashboard">
 				<Heading
@@ -86,11 +41,28 @@ class ChooseProfile extends React.Component {
 				>
 					Choose your profile
 				</Heading>
-				{Object.keys(conditionalRender).map(toDisplay => {
-					return conditionalRender[toDisplay].condition
-						? conditionalRender[toDisplay].component
-						: null;
-				})}
+				<div key={1} className="dashboard__profiles_grid">
+					{data.map(profile => {
+						return (
+							<AccountThumbnail
+								onClick={() =>
+									this.selectionHandler(
+										profile.regionId,
+										profile.realmId,
+										profile.profileId
+									)
+								}
+								key={profile.profileId}
+								profile_name={profile.name}
+								avatar={profile.avatarUrl}
+								region={Translator.idsToName(
+									profile.regionId,
+									profile.realmId
+								)}
+							/>
+						);
+					})}
+				</div>
 			</div>
 		);
 	}
