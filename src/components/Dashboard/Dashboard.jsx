@@ -13,6 +13,7 @@ class Dashboard extends React.Component {
 
 	render() {
 		const { data } = this.props;
+		console.log(data);
 		return (
 			<div>
 				<Pane
@@ -39,10 +40,13 @@ class Dashboard extends React.Component {
 						/>
 					</Pane>
 					<Pane display="grid" width={"100vw"} height={"62.2vh"}>
-						<Pane paddingLeft={85}>
-							<Heading is={"h2"} size={600}>
+						<Pane marginLeft={60}>
+							<Heading is={"h2"} size={900}>
 								{data.summary.displayName}
 							</Heading>
+							<Text size={300} marginLeft="4rem">
+								{localStorage.getItem("battletag")}
+							</Text>
 						</Pane>
 					</Pane>
 				</React.Fragment>
