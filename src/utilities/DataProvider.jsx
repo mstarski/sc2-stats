@@ -5,6 +5,7 @@ const { Pane, Text, Heading } = require("evergreen-ui");
 
 //Components
 const Loader = require("../dumb-components/Loader/Loader");
+const ErrorMessage = require("../dumb-components/ErrorMessage/ErrorMessage");
 
 function DataProvider(Component, region, dataSource) {
 	return class DataProviderComponent extends React.Component {
@@ -26,8 +27,11 @@ function DataProvider(Component, region, dataSource) {
 					localStorage.getItem("token")
 				)(dataSource);
 			} catch (error) {
-				this.setState({ error: error, loading: false });
-				throw new Error(`Failed to fetch: \n${error}`);
+				await this.setState({
+					error: error.toString(),
+					loading: false,
+				});
+				throw new Error(error);
 			}
 			await this.setState({ data, loading: false });
 			return 0;
@@ -47,14 +51,7 @@ function DataProvider(Component, region, dataSource) {
 						!this.state.data &&
 						this.state.error &&
 						!this.state.loading,
-					component: (
-						<Pane key={2}>
-							<Heading is={"h2"} size={700}>
-								Oops - something went wrong !
-							</Heading>
-							<Text>{this.state.error}</Text>
-						</Pane>
-					),
+					component: <ErrorMessage error={this.state.error} />,
 				},
 				loading: {
 					condition:
