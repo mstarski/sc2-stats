@@ -1,11 +1,13 @@
 //Packages
 const React = require("react");
 const { Pane, Text, Heading, Avatar } = require("evergreen-ui");
-const compare = require("../../utilities/compareFunction");
 
 //Components
 const MenuIcon = require("../../dumb-components/MenuIcon/MenuIcon");
 const raceLogos = require("../../utilities/raceLogos");
+const SideSheetComponent = require("../../dumb-components/SideSheet/SideSheet");
+
+const LeagueIcon = require("../../../assets/diamond_league.png");
 
 class Dashboard extends React.Component {
 	constructor(props) {
@@ -60,10 +62,17 @@ class Dashboard extends React.Component {
 					<Heading is={"h1"} size={800}>
 						SC II Stats
 					</Heading>
-					<MenuIcon />
+					<SideSheetComponent />
 				</Pane>
 				<React.Fragment>
-					<Pane width={"100vw"} marginTop={50} padding={20} key={1}>
+					<Pane
+						display="grid"
+						gridTemplateColumns="29.5% 70.5%"
+						width={"100vw"}
+						marginTop={50}
+						padding={20}
+						key={1}
+					>
 						<Avatar
 							src={data.summary.portrait}
 							alt="profile_portrait"
@@ -71,8 +80,17 @@ class Dashboard extends React.Component {
 							size={100}
 							marginLeft={50}
 						/>
+						<Pane>
+							<Heading is={"h3"}>Achievements</Heading>
+							<Pane width="98%" height="90%" background="tint1" />
+						</Pane>
 					</Pane>
-					<Pane display="grid" width={"100vw"} height={"62.2vh"}>
+					<Pane
+						display="grid"
+						gridTemplateColumns="30% 70%"
+						width={"100vw"}
+						height={"62.2vh"}
+					>
 						<Pane marginLeft={60}>
 							<Heading is={"h2"} size={900}>
 								{localStorage.getItem("main_race") !==
@@ -100,6 +118,30 @@ class Dashboard extends React.Component {
 							<Text size={300} marginLeft="4rem">
 								{localStorage.getItem("battletag")}
 							</Text>
+							<Heading is={"h3"} marginTop={20}>
+								Best 1v1 Rank
+							</Heading>
+							<img
+								style={{ margin: "10px" }}
+								width={90}
+								height={100}
+								src={LeagueIcon}
+								alt="player_league"
+							/>
+							<Heading is={"h3"} marginTop={20}>
+								Best Team Rank
+							</Heading>
+							<img
+								style={{ margin: "10px" }}
+								width={90}
+								height={100}
+								src={LeagueIcon}
+								alt="player_league"
+							/>
+						</Pane>
+						<Pane>
+							<Heading is={"h3"}>Current Season</Heading>
+							<Pane height="90%" width="96%" background="tint1" />
 						</Pane>
 					</Pane>
 				</React.Fragment>
