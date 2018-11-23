@@ -4,8 +4,10 @@ const { Pane, Text, Heading, Avatar } = require("evergreen-ui");
 
 //Components
 const raceLogos = require("../../utilities/raceLogos");
-const SideSheetComponent = require("../../dumb-components/SideSheet/SideSheet");
+const Header = require("../../dumb-components/Header/Header");
 const LeagueIcon = require("../../../assets/diamond_league.png");
+const CampaginHighlight = require("../../dumb-components/CampaignHighlight/CampaignHighlight");
+const CurrentSeasonHighlight = require("../../dumb-components/CurrentSeasonHighlight/CurrentSeasonHighlight");
 
 class Dashboard extends React.Component {
 	constructor(props) {
@@ -49,19 +51,7 @@ class Dashboard extends React.Component {
 		console.log(data);
 		return (
 			<div>
-				<Pane
-					width="100vw"
-					height="8vh"
-					display="flex"
-					alignItems="center"
-					padding={10}
-					justifyContent="space-between"
-				>
-					<Heading is={"h1"} size={800}>
-						SC II Stats
-					</Heading>
-					<SideSheetComponent />
-				</Pane>
+				<Header />
 				<React.Fragment>
 					<Pane
 						display="grid"
@@ -78,10 +68,7 @@ class Dashboard extends React.Component {
 							size={100}
 							marginLeft={50}
 						/>
-						<Pane>
-							<Heading is={"h3"}>Achievements</Heading>
-							<Pane width="98%" height="90%" background="tint1" />
-						</Pane>
+						<CampaginHighlight />
 					</Pane>
 					<Pane
 						display="grid"
@@ -137,10 +124,7 @@ class Dashboard extends React.Component {
 								alt="player_league"
 							/>
 						</Pane>
-						<Pane>
-							<Heading is={"h3"}>Current Season</Heading>
-							<Pane height="90%" width="96%" background="tint1" />
-						</Pane>
+						<CurrentSeasonHighlight />
 					</Pane>
 				</React.Fragment>
 			</div>
