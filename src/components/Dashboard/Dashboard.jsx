@@ -3,10 +3,8 @@ const React = require("react");
 const { Pane, Text, Heading, Avatar } = require("evergreen-ui");
 
 //Components
-const MenuIcon = require("../../dumb-components/MenuIcon/MenuIcon");
 const raceLogos = require("../../utilities/raceLogos");
 const SideSheetComponent = require("../../dumb-components/SideSheet/SideSheet");
-
 const LeagueIcon = require("../../../assets/diamond_league.png");
 
 class Dashboard extends React.Component {
