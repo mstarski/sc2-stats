@@ -6,18 +6,28 @@ const { Pane, Text, Heading, Avatar } = require("evergreen-ui");
 const raceLogos = require("../../utilities/raceLogos");
 const Header = require("../../dumb-components/Header/Header");
 const LeagueIcon = require("../../../assets/diamond_league.png");
-const CampaginHighlight = require("../../dumb-components/CampaignHighlight/CampaignHighlight");
+const CampaignHighlight = require("../../dumb-components/CampaignHighlight/CampaignHighlight");
 const CurrentSeasonHighlight = require("../../dumb-components/CurrentSeasonHighlight/CurrentSeasonHighlight");
 
 class Dashboard extends React.Component {
 	constructor(props) {
 		super(props);
-
+		this.state = {
+			campaignSlide: 0,
+		};
 		this.raceIconStyle = this.raceIconStyle.bind(this);
+		this.changeCampaignSlide = this.changeCampaignSlide.bind(this);
 	}
 
 	componentDidMount() {
 		this.setSeasonsMainRace(this.props.data.career);
+	}
+
+	changeCampaignSlide(direction) {
+		this.setState(state => ({
+			campaignSlide:
+				state.campaignSlide - (direction === "backward" ? 1 : -1),
+		}));
 	}
 
 	setSeasonsMainRace(career_data) {
@@ -68,7 +78,11 @@ class Dashboard extends React.Component {
 							size={100}
 							marginLeft={50}
 						/>
-						<CampaginHighlight />
+						<CampaignHighlight
+							data={data.campaign}
+							slide={this.state.campaignSlide}
+							changeSlide={this.changeCampaignSlide}
+						/>
 					</Pane>
 					<Pane
 						display="grid"

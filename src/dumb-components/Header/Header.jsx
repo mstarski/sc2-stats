@@ -1,5 +1,5 @@
 const React = require("react");
-const { Heading, Pane } = require("evergreen-ui");
+const { Heading, Pane, Badge } = require("evergreen-ui");
 const SideSheetComponent = require("../SideSheet/SideSheet");
 
 function Header(props) {
@@ -14,6 +14,9 @@ function Header(props) {
 		>
 			<Heading is={"h1"} size={800}>
 				SC II Stats
+				<Badge color="neutral" isSolid>
+					Beta
+				</Badge>
 			</Heading>
 			<SideSheetComponent />
 		</Pane>
