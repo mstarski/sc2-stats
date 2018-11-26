@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			campaignSlide: 0,
+			campaignSlider: 0,
 		};
 		this.raceIconStyle = this.raceIconStyle.bind(this);
 		this.changeCampaignSlide = this.changeCampaignSlide.bind(this);
@@ -25,8 +25,10 @@ class Dashboard extends React.Component {
 
 	changeCampaignSlide(direction) {
 		this.setState(state => ({
-			campaignSlide:
-				state.campaignSlide - (direction === "backward" ? 1 : -1),
+			campaignSlider:
+				(state.campaignSlider +
+					1 * (direction === "backward" ? -1 : 1)) %
+				3,
 		}));
 	}
 
@@ -80,7 +82,7 @@ class Dashboard extends React.Component {
 						/>
 						<CampaignHighlight
 							data={data.campaign}
-							slide={this.state.campaignSlide}
+							slide={this.state.campaignSlider}
 							changeSlide={this.changeCampaignSlide}
 						/>
 					</Pane>
