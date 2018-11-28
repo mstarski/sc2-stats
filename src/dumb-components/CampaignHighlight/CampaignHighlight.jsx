@@ -3,9 +3,27 @@ const React = require("react");
 const { Pane, Heading, Button, Badge } = require("evergreen-ui");
 
 //Campaign Logos
-const WingsOfLiberty = require("../../../assets/sc2_wol_logo.png");
-const HeartOfTheSwarm = require("../../../assets/sc2_hots_logo.png");
-const LegacyOfTheVoid = require("../../../assets/sc2_lotv_logo.png");
+const WingsOfLiberty = (
+	<img
+		className="expansion_logo"
+		src={require("../../../assets/sc2_wol_logo.png")}
+		alt="WingsOfLiberty"
+	/>
+);
+const HeartOfTheSwarm = (
+	<img
+		className="expansion_logo"
+		src={require("../../../assets/sc2_hots_logo.png")}
+		alt="HeartOfTheSwarm"
+	/>
+);
+const LegacyOfTheVoid = (
+	<img
+		className="expansion_logo"
+		src={require("../../../assets/sc2_lotv_logo.png")}
+		alt="LegacyOfTheVoid"
+	/>
+);
 
 function CampaignHighlight(props) {
 	const difficultyToColor = {
@@ -40,14 +58,7 @@ function CampaignHighlight(props) {
 						][2][0]
 					}
 				</Button>
-				<img
-					style={{ width: 200, height: 80 }}
-					src={
-						expansions[
-							Object.keys(expansions)[Math.abs(props.slide)]
-						][0]
-					}
-					alt="Expansion Name"
+				{expansions[Object.keys(expansions)[Math.abs(props.slide)]][0]}
 				/>
 				<Heading marginLeft={20} is={"h4"}>
 					Difficulty:{" "}
