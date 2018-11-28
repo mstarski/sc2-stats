@@ -15,12 +15,10 @@ function CampaignHighlight(props) {
 	};
 
 	const expansions = {
-		WoL: [WingsOfLiberty, "wings-of-liberty"],
-		HotS: [HeartOfTheSwarm, "heart-of-the-swarm"],
-		LotV: [LegacyOfTheVoid, "legacy-of-the-void"],
+		WoL: [WingsOfLiberty, "wings-of-liberty", ["Lotv", "HotS"]],
+		HotS: [HeartOfTheSwarm, "heart-of-the-swarm", ["WoL", "LotV"]],
+		LotV: [LegacyOfTheVoid, "legacy-of-the-void", ["HotS", "WoL"]],
 	};
-
-	console.log(props);
 	return (
 		<Pane>
 			<Heading is={"h3"}>Campaign</Heading>
@@ -36,9 +34,11 @@ function CampaignHighlight(props) {
 					marginRight={12}
 					iconBefore="arrow-left"
 				>
-					{props.slide === 0
-						? Object.keys(expansions)[2]
-						: Object.keys(expansions)[Math.abs(props.slide - 1)]}
+					{
+						expansions[
+							Object.keys(expansions)[Math.abs(props.slide)]
+						][2][0]
+					}
 				</Button>
 				<img
 					style={{ width: 200, height: 80 }}
@@ -81,7 +81,11 @@ function CampaignHighlight(props) {
 					marginRight={12}
 					iconBefore="arrow-right"
 				>
-					{Object.keys(expansions)[Math.abs(props.slide + 1) % 3]}
+					{
+						expansions[
+							Object.keys(expansions)[Math.abs(props.slide)]
+						][2][1]
+					}
 				</Button>
 			</Pane>
 		</Pane>

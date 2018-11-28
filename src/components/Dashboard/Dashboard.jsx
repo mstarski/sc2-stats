@@ -26,8 +26,7 @@ class Dashboard extends React.Component {
 	changeCampaignSlide(direction) {
 		this.setState(state => ({
 			campaignSlider:
-				(state.campaignSlider +
-					1 * (direction === "backward" ? -1 : 1)) %
+				(state.campaignSlider + (direction === "backward" ? -1 : 1)) %
 				3,
 		}));
 	}
