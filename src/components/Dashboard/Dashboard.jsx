@@ -68,7 +68,6 @@ class Dashboard extends React.Component {
 						display="grid"
 						gridTemplateColumns="29.5% 70.5%"
 						width={"100vw"}
-						marginTop={50}
 						padding={20}
 						key={1}
 					>
