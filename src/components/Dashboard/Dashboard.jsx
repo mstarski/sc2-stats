@@ -139,7 +139,9 @@ class Dashboard extends React.Component {
 								alt="player_league"
 							/>
 						</Pane>
-						<CurrentSeasonHighlight />
+						<CurrentSeasonHighlight
+							career={this.props.data.career}
+						/>
 					</Pane>
 				</React.Fragment>
 			</div>

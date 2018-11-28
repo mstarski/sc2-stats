@@ -59,7 +59,6 @@ function CampaignHighlight(props) {
 					}
 				</Button>
 				{expansions[Object.keys(expansions)[Math.abs(props.slide)]][0]}
-				/>
 				<Heading marginLeft={20} is={"h4"}>
 					Difficulty:{" "}
 					<Badge
