@@ -12,7 +12,9 @@ function CurrentSeasonHighlight(props) {
 
 	return (
 		<Pane>
-			<Heading is={"h3"}>Current Season</Heading>
+			<Heading marginLeft={-17} is={"h3"}>
+				Current Season
+			</Heading>
 			<Pane height="90%" width="96%">
 				<Pane display="grid" gridTemplateColumns="1fr 1fr">
 					<Pane

@@ -8,6 +8,7 @@ const Header = require("../../dumb-components/Header/Header");
 const CampaignHighlight = require("../../dumb-components/CampaignHighlight/CampaignHighlight");
 const CurrentSeasonHighlight = require("../../dumb-components/CurrentSeasonHighlight/CurrentSeasonHighlight");
 const Translator = require("../../utilities/Translator");
+const BasicInfo = require("../../dumb-components/BasicInfo/BasicInfo");
 
 class Dashboard extends React.Component {
 	constructor(props) {
@@ -115,53 +116,25 @@ class Dashboard extends React.Component {
 							slide={this.state.campaignSlider}
 							changeSlide={this.changeCampaignSlide}
 						/>
-					</Pane>
-					<Pane
-						display="grid"
-						gridTemplateColumns="30% 70%"
-						width={"100vw"}
-						height={"62.2vh"}
-					>
-						<Pane marginLeft={60}>
-							<Heading is={"h2"} size={900}>
-								{localStorage.getItem("main_race") !==
-								"null" ? (
-									<img
-										style={this.raceIconStyle()}
-										src={
-											raceLogos[
-												localStorage.getItem(
-													"main_race"
-												)
-											].logo
-										}
-										alt="race_logo"
-									/>
-								) : (
-									<Avatar
-										size={50}
-										style={this.raceIconStyle()}
-									/>
-								)}
-
-								{data.summary.displayName}
-							</Heading>
-							<Text size={300} marginLeft="4rem">
-								{localStorage.getItem("battletag")}
-							</Text>
-							<Heading is={"h3"} marginTop={20}>
-								Best 1v1 Rank
-							</Heading>
-							{this.displayProperBestRankIcon("1v1")}
-							<Heading is={"h3"} marginTop={20}>
-								Best Team Rank
-							</Heading>
-							{this.displayProperBestRankIcon("team")}
+						<Pane
+							display="grid"
+							gridTemplateColumns="30% 70%"
+							width={"100vw"}
+							height={"62.2vh"}
+							marginTop={"1rem"}
+						>
+							<BasicInfo
+								displayProperBestRankIcon={
+									this.displayProperBestRankIcon
+								}
+								raceIconStyle={this.raceIconStyle}
+								displayName={data.summary.displayName}
+							/>
+							<CurrentSeasonHighlight
+								career={this.props.data.career}
+								swarmLevels={this.props.data.swarmLevels}
+							/>
 						</Pane>
-						<CurrentSeasonHighlight
-							career={this.props.data.career}
-							swarmLevels={this.props.data.swarmLevels}
-						/>
 					</Pane>
 				</React.Fragment>
 			</div>
