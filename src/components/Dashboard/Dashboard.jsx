@@ -5,9 +5,9 @@ const { Pane, Text, Heading, Avatar } = require("evergreen-ui");
 //Components
 const raceLogos = require("../../utilities/raceLogos");
 const Header = require("../../dumb-components/Header/Header");
-const LeagueIcon = require("../../../assets/diamond_league.png");
 const CampaignHighlight = require("../../dumb-components/CampaignHighlight/CampaignHighlight");
 const CurrentSeasonHighlight = require("../../dumb-components/CurrentSeasonHighlight/CurrentSeasonHighlight");
+const Translator = require("../../utilities/Translator");
 
 class Dashboard extends React.Component {
 	constructor(props) {
@@ -17,6 +17,9 @@ class Dashboard extends React.Component {
 		};
 		this.raceIconStyle = this.raceIconStyle.bind(this);
 		this.changeCampaignSlide = this.changeCampaignSlide.bind(this);
+		this.displayProperBestRankIcon = this.displayProperBestRankIcon.bind(
+			this
+		);
 	}
 
 	componentDidMount() {
@@ -57,9 +60,38 @@ class Dashboard extends React.Component {
 		};
 	}
 
+	displayProperBestRankIcon(type) {
+		const best1v1Rank = this.props.data.career.best1v1Finish.leagueName;
+		const bestTeamRank = this.props.data.career.bestTeamFinish.leagueName;
+		const unrankedIcon = <Avatar size={90} margin={10} />;
+
+		if (type === "1v1") {
+			return best1v1Rank ? (
+				<img
+					style={{ width: "100px", height: "110px", margin: "10px" }}
+					src={Translator.rankToIcon(best1v1Rank)}
+					alt="Best 1v1 Rank"
+				/>
+			) : (
+				unrankedIcon
+			);
+		} else {
+			return bestTeamRank ? (
+				<img
+					style={{ width: "100px", height: "110px", margin: "10px" }}
+					src={Translator.rankToIcon(bestTeamRank)}
+					alt="Best Team Rank"
+				/>
+			) : (
+				unrankedIcon
+			);
+		}
+	}
+
 	render() {
 		const { data } = this.props;
 		console.log(data);
+
 		return (
 			<div>
 				<Header />
@@ -120,23 +152,11 @@ class Dashboard extends React.Component {
 							<Heading is={"h3"} marginTop={20}>
 								Best 1v1 Rank
 							</Heading>
-							<img
-								style={{ margin: "10px" }}
-								width={90}
-								height={100}
-								src={LeagueIcon}
-								alt="player_league"
-							/>
+							{this.displayProperBestRankIcon("1v1")}
 							<Heading is={"h3"} marginTop={20}>
 								Best Team Rank
 							</Heading>
-							<img
-								style={{ margin: "10px" }}
-								width={90}
-								height={100}
-								src={LeagueIcon}
-								alt="player_league"
-							/>
+							{this.displayProperBestRankIcon("team")}
 						</Pane>
 						<CurrentSeasonHighlight
 							career={this.props.data.career}
