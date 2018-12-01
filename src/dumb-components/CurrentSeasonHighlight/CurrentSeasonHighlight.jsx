@@ -2,9 +2,10 @@ const React = require("react");
 const { Pane, Heading, Avatar, Strong } = require("evergreen-ui");
 const Translator = require("../../utilities/Translator");
 const RaceWins = require("./RaceWins");
+const Levels = require("./Levels");
 
 function CurrentSeasonHighlight(props) {
-	const { career } = props;
+	const { career, swarmLevels } = props;
 
 	const current1v1 = Translator.rankToIcon(career.current1v1LeagueName);
 	const currentTeam = Translator.rankToIcon(career.currentBestTeamLeagueName);
@@ -76,6 +77,7 @@ function CurrentSeasonHighlight(props) {
 							win_count={career.protossWins}
 						/>
 					</Pane>
+					<Levels data={swarmLevels} />
 				</Pane>
 			</Pane>
 		</Pane>

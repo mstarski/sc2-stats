@@ -140,6 +140,7 @@ class Dashboard extends React.Component {
 						</Pane>
 						<CurrentSeasonHighlight
 							career={this.props.data.career}
+							swarmLevels={this.props.data.swarmLevels}
 						/>
 					</Pane>
 				</React.Fragment>
