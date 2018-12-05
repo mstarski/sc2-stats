@@ -1,13 +1,14 @@
 const React = require("react");
 const { SideSheet, Pane, Heading, Card, Button } = require("evergreen-ui");
 const MenuIcon = require("../MenuIcon/MenuIcon");
+const SidesheetContent = require("./SidesheetContent");
 
 class SideSheetComponent extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			isShown: false,
+			isShown: true,
 		};
 	}
 
@@ -30,7 +31,7 @@ class SideSheetComponent extends React.Component {
 						backgroundColor="white"
 					>
 						<Pane padding={16}>
-							<Heading size={600}>Title</Heading>
+							<Heading size={600}>SC2 Stats Menu</Heading>
 						</Pane>
 					</Pane>
 					<Pane
@@ -42,12 +43,12 @@ class SideSheetComponent extends React.Component {
 						<Card
 							backgroundColor="white"
 							elevation={0}
-							height={240}
+							height={"100%"}
 							display="flex"
 							alignItems="center"
 							justifyContent="center"
 						>
-							<Heading>Some content</Heading>
+							<SidesheetContent />
 						</Card>
 					</Pane>
 				</SideSheet>

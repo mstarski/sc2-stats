@@ -33,7 +33,7 @@ function CampaignHighlight(props) {
 	};
 
 	const expansions = {
-		WoL: [WingsOfLiberty, "wings-of-liberty", ["Lotv", "HotS"]],
+		WoL: [WingsOfLiberty, "wings-of-liberty", ["LotV", "HotS"]],
 		HotS: [HeartOfTheSwarm, "heart-of-the-swarm", ["WoL", "LotV"]],
 		LotV: [LegacyOfTheVoid, "legacy-of-the-void", ["HotS", "WoL"]],
 	};
@@ -89,7 +89,7 @@ function CampaignHighlight(props) {
 				<Button
 					onClick={() => props.changeSlide("forward")}
 					marginRight={12}
-					iconBefore="arrow-right"
+					iconAfter="arrow-right"
 				>
 					{
 						expansions[
