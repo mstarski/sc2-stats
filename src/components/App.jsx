@@ -4,10 +4,12 @@ const { Route, Switch, Redirect, withRouter } = require("react-router-dom");
 const { ipcRenderer } = window.require("electron");
 
 //Components
+const Header = require("../dumb-components/Header/Header");
 const Login = require("./Login/Login");
 const ChooseProfile = require("./ChooseProfile/ChooseProfile");
 const DataProvider = require("../utilities/DataProvider");
 const Dashboard = require("./Dashboard/Dashboard");
+const Achievements = require("./Achievements/Achievements");
 
 class App extends React.Component {
 	constructor(props) {
@@ -23,8 +25,15 @@ class App extends React.Component {
 			this.props.history.push("/choose-profile");
 		});
 
+		const noHeaderRoutes = ["/choose-profile", "/login"];
+
 		return (
-			<React.Fragment>
+			<div>
+				{noHeaderRoutes.includes(
+					this.props.history.location.pathname
+				) ? null : (
+					<Header />
+				)}
 				<Switch>
 					<Route exact path="/login" component={Login} />
 					<Route
@@ -49,9 +58,14 @@ class App extends React.Component {
 							)}/${localStorage.getItem("profileId")}`
 						)}
 					/>
+					<Route
+						exact
+						path="/achievements"
+						component={Achievements}
+					/>
 					<Redirect to="/login" />
 				</Switch>
-			</React.Fragment>
+			</div>
 		);
 	}
 }

@@ -92,7 +92,6 @@ class Dashboard extends React.Component {
 
 		return (
 			<div>
-				<Header />
 				<React.Fragment>
 					<Pane
 						display="grid"

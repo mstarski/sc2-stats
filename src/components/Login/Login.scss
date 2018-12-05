@@ -1,23 +1,23 @@
 .login-wrapper {
-    width: 100vw;
-    height: 300px;
-    margin: auto;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    color: whitesmoke;
+	width: 100vw;
+	height: 100vh;
+	margin: auto;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	color: whitesmoke;
 
-    &__button {
-        display: flex;
-        align-items: center;
-        background: rgb(27, 39, 53);
-        color: whitesmoke;
-        margin-top: 1rem;
+	&__button {
+		display: flex;
+		align-items: center;
+		background: rgb(27, 39, 53);
+		color: whitesmoke;
+		margin-top: 1rem;
 
-        & > span {
-            font-size: 1.5rem;
-            padding: 10px;
-        }
-    }
+		& > span {
+			font-size: 1.5rem;
+			padding: 10px;
+		}
+	}
 }
