@@ -1,16 +1,36 @@
 const React = require("react");
-const { Pane, Heading, TabNavigation, SidebarTab } = require("evergreen-ui");
+const { Pane, TabNavigation, SidebarTab } = require("evergreen-ui");
 const BroodLordGIF = require("../../../assets/carbot_broodlord.gif");
 
 function SidesheetContent(props) {
-	const optionItems = [
-		"Change profile",
-		"Ladder",
-		"Achievements",
-		"Statistics",
-		"Replay Analysis",
-		"Logout",
-	];
+	const { handlers } = props;
+
+	const optionItems = {
+		change_profile: {
+			label: "Change profile",
+			onSelect: () => handlers.changeProfile(),
+		},
+		ladder: {
+			label: "Ladder",
+			onSelect: () => {},
+		},
+		achievements: {
+			label: "Achievements",
+			onSelect: () => {},
+		},
+		statistics: {
+			label: "Statistics",
+			onSelect: () => {},
+		},
+		replay_analysis: {
+			label: "Replay Analysis",
+			onSelect: () => {},
+		},
+		logout: {
+			label: "Logout",
+			onSelect: () => handlers.logout(),
+		},
+	};
 
 	return (
 		<Pane>
@@ -20,15 +40,14 @@ function SidesheetContent(props) {
 				alt="Broodlord GIF"
 			/>
 			<TabNavigation marginX={-4} marginBottom={16}>
-				{optionItems.map((tab, index) => (
+				{Object.keys(optionItems).map((option, index) => (
 					<SidebarTab
-						key={tab}
-						is="a"
-						href="#"
-						id={tab}
-						isSelected={index === 0}
+						key={optionItems[option].label}
+						is="span"
+						onSelect={optionItems[option].onSelect}
+						id={"i" + index}
 					>
-						{tab}
+						{optionItems[option].label}
 					</SidebarTab>
 				))}
 			</TabNavigation>

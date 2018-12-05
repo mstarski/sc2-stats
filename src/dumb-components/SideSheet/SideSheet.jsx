@@ -2,13 +2,25 @@ const React = require("react");
 const { SideSheet, Pane, Heading, Card, Button } = require("evergreen-ui");
 const MenuIcon = require("../MenuIcon/MenuIcon");
 const SidesheetContent = require("./SidesheetContent");
+const { withRouter } = require("react-router-dom");
 
 class SideSheetComponent extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			isShown: true,
+			isShown: false,
+		};
+		this.navigationHandlers = this.navigationHandlers.bind(this);
+	}
+
+	navigationHandlers() {
+		return {
+			changeProfile: () => this.props.history.push("/choose-profile"),
+			logout: () => {
+				localStorage.clear();
+				this.props.history.push("/login");
+			},
 		};
 	}
 
@@ -48,7 +60,9 @@ class SideSheetComponent extends React.Component {
 							alignItems="center"
 							justifyContent="center"
 						>
-							<SidesheetContent />
+							<SidesheetContent
+								handlers={this.navigationHandlers()}
+							/>
 						</Card>
 					</Pane>
 				</SideSheet>
@@ -58,4 +72,4 @@ class SideSheetComponent extends React.Component {
 	}
 }
 
-module.exports = SideSheetComponent;
+module.exports = withRouter(SideSheetComponent);

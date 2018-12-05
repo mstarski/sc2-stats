@@ -21,10 +21,7 @@ class Dashboard extends React.Component {
 		this.displayProperBestRankIcon = this.displayProperBestRankIcon.bind(
 			this
 		);
-	}
-
-	componentDidMount() {
-		this.setSeasonsMainRace(this.props.data.career);
+		this.setSeasonsMainRace(props.data.career);
 	}
 
 	changeCampaignSlide(direction) {
