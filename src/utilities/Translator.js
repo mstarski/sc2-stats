@@ -31,6 +31,21 @@ class Translator {
 
 		return result;
 	}
+
+	static rankToIcon(rank) {
+		const rankIcons = {
+			BRONZE: require("../../assets/bronze_league.png"),
+			SILVER: require("../../assets/silver_league.png"),
+			GOLD: require("../../assets/gold_league.png"),
+			PLATINUM: require("../../assets/platinum_league.png"),
+			DIAMOND: require("../../assets/diamond_league.png"),
+			MASTER: require("../../assets/master_league.png"),
+			GRANDMASTER: require("../../assets/grandmaster_league.png"),
+			null: null,
+		};
+
+		return rankIcons[rank];
+	}
 }
 
 module.exports = Translator;

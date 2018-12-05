@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const { resolve } = require("path");
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -9,8 +9,12 @@ function javascript(window, command) {
 	return new Promise((resolve, reject) => {
 		let response;
 		window.webContents.executeJavaScript(command, function(result) {
-			response = JSON.parse(result);
-			resolve(response);
+			try {
+				response = JSON.parse(result);
+				resolve(response);
+			} catch (e) {
+				reject(e);
+			}
 		});
 	});
 }
@@ -82,7 +86,12 @@ ipcMain.on("auth", function(event) {
 			event.sender.send("auth-complete", response);
 		})
 		.catch(error => {
-			throw new Error(error);
+			dialog.showMessageBox(authWindow, {
+				type: "info",
+				message:
+					"Please log in to the battle.net service and try again",
+				title: "Login required",
+			});
 		});
 	authWindow = null;
 });

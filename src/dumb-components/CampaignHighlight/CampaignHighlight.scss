@@ -1,0 +1,21 @@
+.expansion_logo {
+	width: 200px;
+	height: 80px;
+
+	animation: appear 0.3s ease-in-out;
+}
+
+@keyframes appear {
+	0% {
+		opacity: 0;
+	}
+	25% {
+		opacity: 0.25;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}

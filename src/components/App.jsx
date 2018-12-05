@@ -30,31 +30,23 @@ class App extends React.Component {
 					<Route
 						exact
 						path="/choose-profile"
-						render={() => (
-							<DataProvider
-								region="eu"
-								dataSource={`/player/${localStorage.getItem(
-									"id"
-								)}`}
-							>
-								<ChooseProfile />
-							</DataProvider>
+						component={DataProvider(
+							ChooseProfile,
+							"eu",
+							`/player/${localStorage.getItem("id")}`
 						)}
 					/>
 					<Route
 						exact
 						path="/dashboard"
-						render={() => (
-							<DataProvider
-								region={localStorage.getItem("region")}
-								dataSource={`profile/${localStorage.getItem(
-									"regionId"
-								)}/${localStorage.getItem(
-									"realmId"
-								)}/${localStorage.getItem("profileId")}`}
-							>
-								<Dashboard />
-							</DataProvider>
+						component={DataProvider(
+							Dashboard,
+							localStorage.getItem("region"),
+							`profile/${localStorage.getItem(
+								"regionId"
+							)}/${localStorage.getItem(
+								"realmId"
+							)}/${localStorage.getItem("profileId")}`
 						)}
 					/>
 					<Redirect to="/login" />
