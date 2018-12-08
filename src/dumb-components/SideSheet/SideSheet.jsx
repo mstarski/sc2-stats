@@ -18,7 +18,7 @@ class SideSheetComponent extends React.Component {
 	navigate(route, callback) {
 		this.props.history.push(route);
 		this.setState({ isShown: false });
-		callback();
+		return callback ? callback() : null;
 	}
 
 	navigationHandlers() {

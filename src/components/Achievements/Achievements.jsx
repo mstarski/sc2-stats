@@ -5,7 +5,10 @@ class Achievements extends React.Component {
 		super(props);
 	}
 
+	componentDidMount() {}
+
 	render() {
+		const { achievementShowcase, earnedAchievements } = this.props.data;
 		return <h1>Achievements</h1>;
 	}
 }

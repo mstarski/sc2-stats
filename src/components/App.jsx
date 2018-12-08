@@ -26,6 +26,7 @@ class App extends React.Component {
 		});
 
 		const noHeaderRoutes = ["/choose-profile", "/login"];
+		const region = localStorage.getItem("region");
 
 		return (
 			<div>
@@ -41,7 +42,7 @@ class App extends React.Component {
 						path="/choose-profile"
 						component={DataProvider(
 							ChooseProfile,
-							"eu",
+							region,
 							`/player/${localStorage.getItem("id")}`
 						)}
 					/>
@@ -50,7 +51,7 @@ class App extends React.Component {
 						path="/dashboard"
 						component={DataProvider(
 							Dashboard,
-							localStorage.getItem("region"),
+							region,
 							`profile/${localStorage.getItem(
 								"regionId"
 							)}/${localStorage.getItem(
@@ -61,7 +62,15 @@ class App extends React.Component {
 					<Route
 						exact
 						path="/achievements"
-						component={Achievements}
+						component={DataProvider(
+							Achievements,
+							region,
+							`profile/${localStorage.getItem(
+								"regionId"
+							)}/${localStorage.getItem(
+								"realmId"
+							)}/${localStorage.getItem("profileId")}`
+						)}
 					/>
 					<Redirect to="/login" />
 				</Switch>
