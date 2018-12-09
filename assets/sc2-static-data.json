@@ -1,4 +1,4 @@
-module.exports = {
+{
     "achievements": [
        {
           "categoryId": "4371481",
