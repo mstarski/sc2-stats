@@ -43,7 +43,7 @@ class Achievements extends React.PureComponent {
 	}
 
 	render() {
-		const { showcaseData, loading } = this.state;
+		const { showcaseData, loading, db } = this.state;
 
 		return (
 			<React.Fragment>
@@ -51,9 +51,33 @@ class Achievements extends React.PureComponent {
 					<Loader />
 				) : (
 					<div className="achievements">
-						<AchievementShowcase
-							showcaseData={this.state.showcaseData}
-						/>
+						<AchievementShowcase showcaseData={showcaseData} />
+						<Pane
+							display="grid"
+							gridTemplateColumns="repeat(8, 1fr)"
+							gridGap="10px"
+							width="100vw"
+							marginX="auto"
+							marginTop="3rem"
+							justifyItems="center"
+							padding="1rem"
+						>
+							{db.map(achievement => {
+								return (
+									<img
+										className={[
+											achievement.earned
+												? "achievement_earned"
+												: "achievement_not_earned",
+											"achievement_icon",
+										].join(" ")}
+										key={achievement.id}
+										src={achievement.imageUrl}
+										alt={`achievement #${achievement.id}`}
+									/>
+								);
+							})}
+						</Pane>
 					</div>
 				)}
 			</React.Fragment>

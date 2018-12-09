@@ -17,7 +17,7 @@ function AchievementShowcase(props) {
 			>
 				{showcaseData.map(achievement => (
 					<img
-						className="achievement_showcase_icon"
+						className="achievement_icon achievement_showcase_icon"
 						key={achievement.id}
 						src={achievement.imageUrl}
 						alt={`achievement #${achievement.id}`}
