@@ -6,6 +6,10 @@ function SidesheetContent(props) {
 	const { handlers } = props;
 
 	const optionItems = {
+		profile_summary: {
+			label: "Profile Summary",
+			onSelect: () => handlers.profileSummary(),
+		},
 		change_profile: {
 			label: "Change profile",
 			onSelect: () => handlers.changeProfile(),
@@ -16,7 +20,7 @@ function SidesheetContent(props) {
 		},
 		achievements: {
 			label: "Achievements",
-			onSelect: () => {},
+			onSelect: () => handlers.achievements(),
 		},
 		statistics: {
 			label: "Statistics",

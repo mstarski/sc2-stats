@@ -1,5 +1,10 @@
 .dashboard {
-	margin: auto;
+	flex-flow: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
 
 	&__profiles_grid {
 		display: flex;

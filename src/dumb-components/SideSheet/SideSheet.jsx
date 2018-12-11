@@ -11,16 +11,22 @@ class SideSheetComponent extends React.Component {
 		this.state = {
 			isShown: false,
 		};
+		this.navigate = this.navigate.bind(this);
 		this.navigationHandlers = this.navigationHandlers.bind(this);
+	}
+
+	navigate(route, callback) {
+		this.props.history.push(route);
+		this.setState({ isShown: false });
+		return callback ? callback() : null;
 	}
 
 	navigationHandlers() {
 		return {
-			changeProfile: () => this.props.history.push("/choose-profile"),
-			logout: () => {
-				localStorage.clear();
-				this.props.history.push("/login");
-			},
+			profileSummary: () => this.navigate("/dashboard"),
+			changeProfile: () => this.navigate("/choose-profile"),
+			logout: () => this.navigate("/login", localStorage.clear()),
+			achievements: () => this.navigate("/achievements"),
 		};
 	}
 

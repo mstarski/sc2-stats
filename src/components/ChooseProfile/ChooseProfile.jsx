@@ -6,7 +6,6 @@ const { withRouter } = require("react-router-dom");
 //Components
 const AccountThumbnail = require("../../dumb-components/AccountThumbnail/AccountThumbnail.jsx");
 const Translator = require("../../utilities/Translator");
-const Loader = require("../../dumb-components/Loader/Loader");
 
 class ChooseProfile extends React.Component {
 	constructor(props) {

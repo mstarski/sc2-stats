@@ -4,10 +4,12 @@ const { Route, Switch, Redirect, withRouter } = require("react-router-dom");
 const { ipcRenderer } = window.require("electron");
 
 //Components
+const Header = require("../dumb-components/Header/Header");
 const Login = require("./Login/Login");
 const ChooseProfile = require("./ChooseProfile/ChooseProfile");
 const DataProvider = require("../utilities/DataProvider");
 const Dashboard = require("./Dashboard/Dashboard");
+const Achievements = require("./Achievements/Achievements");
 
 class App extends React.Component {
 	constructor(props) {
@@ -23,8 +25,16 @@ class App extends React.Component {
 			this.props.history.push("/choose-profile");
 		});
 
+		const noHeaderRoutes = ["/choose-profile", "/login"];
+		const region = localStorage.getItem("region");
+
 		return (
-			<React.Fragment>
+			<div>
+				{noHeaderRoutes.includes(
+					this.props.history.location.pathname
+				) ? null : (
+					<Header />
+				)}
 				<Switch>
 					<Route exact path="/login" component={Login} />
 					<Route
@@ -32,7 +42,7 @@ class App extends React.Component {
 						path="/choose-profile"
 						component={DataProvider(
 							ChooseProfile,
-							"eu",
+							region,
 							`/player/${localStorage.getItem("id")}`
 						)}
 					/>
@@ -41,7 +51,20 @@ class App extends React.Component {
 						path="/dashboard"
 						component={DataProvider(
 							Dashboard,
-							localStorage.getItem("region"),
+							region,
+							`profile/${localStorage.getItem(
+								"regionId"
+							)}/${localStorage.getItem(
+								"realmId"
+							)}/${localStorage.getItem("profileId")}`
+						)}
+					/>
+					<Route
+						exact
+						path="/achievements"
+						component={DataProvider(
+							Achievements,
+							region,
 							`profile/${localStorage.getItem(
 								"regionId"
 							)}/${localStorage.getItem(
@@ -51,7 +74,7 @@ class App extends React.Component {
 					/>
 					<Redirect to="/login" />
 				</Switch>
-			</React.Fragment>
+			</div>
 		);
 	}
 }
