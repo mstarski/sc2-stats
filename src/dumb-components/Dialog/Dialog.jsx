@@ -1,21 +1,51 @@
 const React = require("react");
-const { Pane, Dialog } = require("evergreen-ui");
+const { Text, Icon, Pane, Dialog } = require("evergreen-ui");
 
 function DialogComponent(props) {
-    return (
-        <Pane>
-            <Dialog
-                alignItems="center"
-                isShown={props.isShown}
-                title="Danger intent"
-                intent="danger"
-                onCloseComplete={props.onClose}
-                confirmLabel="Delete Something"
-            >
-                Dialog content
-            </Dialog>
-        </Pane>
-    );
+	const {
+		description,
+		earned,
+		id,
+		imageUrl,
+		title,
+		points,
+	} = props.achievementData;
+	return (
+		<Pane>
+			<Dialog
+				alignItems="center"
+				isShown={props.isShown}
+				title={title}
+				intent="none"
+				hasFooter={false}
+				onCloseComplete={props.onClose}
+				confirmLabel="Delete Something"
+			>
+				<Pane display="flex" flexFlow="column">
+					<img
+						style={{ alignSelf: "center" }}
+						src={imageUrl}
+						alt="Achievement Icon"
+					/>
+					<Text padding={10} textAlign="center">
+						{description}
+					</Text>
+					<Pane display="flex" padding="2rem" flexFlow="column">
+						<Text>Achievement id: {id}</Text>
+						<Text>
+							Earned:
+							{earned ? (
+								<Icon icon="tick" />
+							) : (
+								<Icon icon="cross" />
+							)}
+						</Text>
+						<Text>Points: {points}</Text>
+					</Pane>
+				</Pane>
+			</Dialog>
+		</Pane>
+	);
 }
 
 module.exports = DialogComponent;
