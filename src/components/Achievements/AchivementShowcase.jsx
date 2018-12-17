@@ -17,7 +17,9 @@ function AchievementShowcase(props) {
 			>
 				{showcaseData.map(achievement => (
 					<img
-						onClick={() => ImgOnClick(achievement)}
+						onClick={() =>
+							ImgOnClick({ ...achievement, earned: true })
+						}
 						className="achievement_icon achievement_showcase_icon"
 						key={achievement.id}
 						src={achievement.imageUrl}

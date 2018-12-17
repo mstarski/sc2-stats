@@ -94,6 +94,8 @@ class Dashboard extends React.Component {
 			<div>
 				<React.Fragment>
 					<Pane
+						height="90vh"
+						overflow="hidden"
 						display="grid"
 						gridTemplateColumns="29.5% 70.5%"
 						width={"100vw"}
