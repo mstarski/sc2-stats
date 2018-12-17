@@ -2,7 +2,7 @@ const React = require("react");
 const { Pane, Heading } = require("evergreen-ui");
 
 function AchievementShowcase(props) {
-	const { showcaseData } = props;
+	const { showcaseData, ImgOnClick } = props;
 
 	return (
 		<React.Fragment>
@@ -17,6 +17,7 @@ function AchievementShowcase(props) {
 			>
 				{showcaseData.map(achievement => (
 					<img
+						onClick={() => ImgOnClick(achievement)}
 						className="achievement_icon achievement_showcase_icon"
 						key={achievement.id}
 						src={achievement.imageUrl}
