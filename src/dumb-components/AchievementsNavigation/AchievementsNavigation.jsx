@@ -8,6 +8,8 @@ class AchievementsNavigation extends React.Component {
 		};
 	}
 
+	//TODO SEARCH HANDLER
+
 	render() {
 		const {
 			currentPage,
