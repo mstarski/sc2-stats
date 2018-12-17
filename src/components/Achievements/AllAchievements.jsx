@@ -13,7 +13,7 @@ function AllAchievements(props) {
 		setPage,
 	} = props;
 	const size = (dbLength / chunkSize) >> 0;
-	console.log(size);
+
 	return (
 		<React.Fragment>
 			<AchievementsNavigation
@@ -21,6 +21,7 @@ function AllAchievements(props) {
 				chunkSize={chunkSize}
 				setPage={setPage}
 				handlePageChange={handlePageChange}
+				dbLength={dbLength}
 			/>
 			<Pane
 				display="grid"

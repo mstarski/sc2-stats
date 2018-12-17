@@ -3,6 +3,9 @@ const { Pane, SearchInput, Button } = require("evergreen-ui");
 class AchievementsNavigation extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			searchText: "",
+		};
 	}
 
 	render() {
@@ -11,8 +14,9 @@ class AchievementsNavigation extends React.Component {
 			chunkSize,
 			setPage,
 			handlePageChange,
+			dbLength,
 		} = this.props;
-
+		const pageCount = (dbLength / chunkSize) >> 0;
 		return (
 			<Pane
 				display="flex"
@@ -30,24 +34,36 @@ class AchievementsNavigation extends React.Component {
 							<Button
 								appearance={index === 0 ? "primary" : "default"}
 								onClick={() =>
-									setPage((currentPage + index) % chunkSize)
+									setPage((currentPage + index) % pageCount)
 								}
 								key={index}
 							>
-								{(currentPage + index) % chunkSize}
+								{(currentPage + index) % pageCount}
 							</Button>
 						);
 					})}
-					<Button onClick={() => setPage(chunkSize)}>
-						{chunkSize}
+					<Button onClick={() => setPage(pageCount)}>
+						{pageCount}
 					</Button>
 					<Button onClick={() => handlePageChange("forward")}>
 						&gt;&gt;
 					</Button>
 				</Pane>
 				<form>
-					<SearchInput placeholder="Search for an achievement ..." />
-					<Button>Search</Button>
+					<SearchInput
+						value={this.state.searchText}
+						onChange={event =>
+							this.setState({ searchText: event.target.value })
+						}
+						placeholder="Search for an achievement ..."
+					/>
+					<Button
+						onClick={() =>
+							props.handleSearch(this.state.searchText)
+						}
+					>
+						Search
+					</Button>
 				</form>
 			</Pane>
 		);
