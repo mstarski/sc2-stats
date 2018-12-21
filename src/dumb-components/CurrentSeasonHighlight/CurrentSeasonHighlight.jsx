@@ -10,6 +10,12 @@ function CurrentSeasonHighlight(props) {
 	const current1v1 = Translator.rankToIcon(career.current1v1LeagueName);
 	const currentTeam = Translator.rankToIcon(career.currentBestTeamLeagueName);
 
+	const assetProperties = {
+		width: 90,
+		height: 90,
+		padding: 5,
+	};
+
 	return (
 		<Pane>
 			<Heading marginLeft={-17} is={"h3"}>
@@ -67,11 +73,15 @@ function CurrentSeasonHighlight(props) {
 					</Pane>
 				</Pane>
 				<Pane
-					marginTop="3rem"
+					marginTop="1rem"
 					display="grid"
 					gridTemplateColumns="1fr 1fr"
 				>
 					<Pane borderRight="1px solid #e1e1e1">
+						<Heading>
+							Games played this season:{" "}
+							<Strong>{career.totalGamesThisSeason}</Strong>
+						</Heading>
 						<RaceWins race="zerg" win_count={career.zergWins} />
 						<RaceWins race="terran" win_count={career.terranWins} />
 						<RaceWins
