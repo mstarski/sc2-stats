@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Pane, Heading, Badge } from "evergreen-ui";
 
 class Ladder extends Component {
 	constructor(props) {
@@ -7,7 +8,13 @@ class Ladder extends Component {
 	}
 	render() {
 		console.log(this.props);
-		return <div>Ladder</div>;
+		return (
+			<Pane>
+				<Heading is={"h2"} size={800} padding={"1rem"}>
+					Ladder
+				</Heading>
+			</Pane>
+		);
 	}
 }
 
