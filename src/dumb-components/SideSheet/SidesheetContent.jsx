@@ -16,7 +16,7 @@ function SidesheetContent(props) {
 		},
 		ladder: {
 			label: "Ladder",
-			onSelect: () => {},
+			onSelect: () => handlers.ladder(),
 		},
 		achievements: {
 			label: "Achievements",

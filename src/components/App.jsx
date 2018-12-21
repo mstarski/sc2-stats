@@ -10,6 +10,7 @@ const ChooseProfile = require("./ChooseProfile/ChooseProfile");
 const DataProvider = require("../utilities/DataProvider");
 const Dashboard = require("./Dashboard/Dashboard");
 const Achievements = require("./Achievements/Achievements");
+const Ladder = require("./Ladder/Ladder").default;
 
 class App extends React.Component {
 	constructor(props) {
@@ -27,6 +28,10 @@ class App extends React.Component {
 
 		const noHeaderRoutes = ["/choose-profile", "/login"];
 		const region = localStorage.getItem("region");
+		const id = localStorage.getItem("id");
+		const regionId = localStorage.getItem("regionId");
+		const profileId = localStorage.getItem("profileId");
+		const realmId = localStorage.getItem("realmId");
 
 		return (
 			<div>
@@ -43,7 +48,7 @@ class App extends React.Component {
 						component={DataProvider(
 							ChooseProfile,
 							region,
-							`/player/${localStorage.getItem("id")}`
+							`/player/${id}`
 						)}
 					/>
 					<Route
@@ -52,11 +57,7 @@ class App extends React.Component {
 						component={DataProvider(
 							Dashboard,
 							region,
-							`profile/${localStorage.getItem(
-								"regionId"
-							)}/${localStorage.getItem(
-								"realmId"
-							)}/${localStorage.getItem("profileId")}`
+							`profile/${regionId}/${realmId}/${profileId}`
 						)}
 					/>
 					<Route
@@ -65,11 +66,16 @@ class App extends React.Component {
 						component={DataProvider(
 							Achievements,
 							region,
-							`profile/${localStorage.getItem(
-								"regionId"
-							)}/${localStorage.getItem(
-								"realmId"
-							)}/${localStorage.getItem("profileId")}`
+							`profile/${regionId}/${realmId}/${profileId}`
+						)}
+					/>
+					<Route
+						path="/ladder"
+						exact
+						component={DataProvider(
+							Ladder,
+							region,
+							`legacy/profile/${regionId}/${realmId}/${profileId}/ladders`
 						)}
 					/>
 					<Redirect to="/login" />

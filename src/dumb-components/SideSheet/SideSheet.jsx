@@ -27,6 +27,7 @@ class SideSheetComponent extends React.Component {
 			changeProfile: () => this.navigate("/choose-profile"),
 			logout: () => this.navigate("/login", localStorage.clear()),
 			achievements: () => this.navigate("/achievements"),
+			ladder: () => this.navigate("/ladder"),
 		};
 	}
 

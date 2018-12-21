@@ -1,5 +1,6 @@
 const React = require("react");
 const { Pane, Heading, Text, Avatar } = require("evergreen-ui");
+const raceLogos = require('../../utilities/raceLogos');
 
 function BasicInfo(props) {
 	const { data } = props;
