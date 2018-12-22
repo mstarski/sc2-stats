@@ -4,7 +4,6 @@ const { Pane, Text, Heading, Avatar } = require("evergreen-ui");
 
 //Components
 const raceLogos = require("../../utilities/raceLogos");
-const Header = require("../../dumb-components/Header/Header");
 const CampaignHighlight = require("../../dumb-components/CampaignHighlight/CampaignHighlight");
 const CurrentSeasonHighlight = require("../../dumb-components/CurrentSeasonHighlight/CurrentSeasonHighlight");
 const Translator = require("../../utilities/Translator");
