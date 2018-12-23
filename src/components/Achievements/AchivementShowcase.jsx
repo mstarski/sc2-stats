@@ -6,7 +6,7 @@ function AchievementShowcase(props) {
 
 	return (
 		<React.Fragment>
-			<Heading is={"h1"} size={800}>
+			<Heading is={"h2"} size={800}>
 				Achievements
 			</Heading>
 			<Pane

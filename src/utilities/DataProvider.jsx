@@ -7,7 +7,7 @@ const { Pane, Text, Heading } = require("evergreen-ui");
 const Loader = require("../dumb-components/Loader/Loader");
 const ErrorMessage = require("../dumb-components/ErrorMessage/ErrorMessage");
 
-function DataProvider(Component, region, dataSource) {
+function DataProvider(Component, region, dataSource, props) {
 	return class DataProviderComponent extends React.Component {
 		constructor(props) {
 			super(props);
@@ -44,7 +44,7 @@ function DataProvider(Component, region, dataSource) {
 						this.state.data &&
 						!this.state.error &&
 						!this.state.loading,
-					component: <Component {...this.state} key={1} />,
+					component: <Component {...this.state} {...props} key={1} />,
 				},
 				error: {
 					condition:
