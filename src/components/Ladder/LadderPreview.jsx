@@ -1,22 +1,20 @@
 import React, { Component } from "react";
 import { Pane, Strong, Heading, Text } from "evergreen-ui";
 import Translator from "../../utilities/Translator";
-import axios from "../../utilities/custom-axios";
+import LadderTable from "./LadderTable";
 
 class LadderPreview extends Component {
 	constructor(props) {
 		super(props);
 	}
 
-	componentDidMount() {
-		const token = localStorage.getItem("token");
-	}
 	render() {
+		const { data } = this.props;
 		return (
 			<Pane>
 				<Pane
 					display="grid"
-					gridTemplateColumns="20% 35% 45%"
+					gridTemplateColumns="20% 70% "
 					alignItems="center"
 				>
 					<img
@@ -25,17 +23,28 @@ class LadderPreview extends Component {
 						style={{ width: 90, height: 100 }}
 						alt="league_image"
 					/>
-					<Pane display="flex">
+					<Pane display="flex" justifyContent="space-around">
 						<Text>
-							Ladder Name <Strong>{this.props.ladderName}</Strong>
+							Ladder Name <br />
+							<Strong>{this.props.ladderName}</Strong>
 						</Text>
 						<Text>
-							Ladder Id <Strong>{this.props.ladderId}</Strong>
+							Ladder Id <br />
+							<Strong>{this.props.ladderId}</Strong>
 						</Text>
 						<Text>
-							Rank <Strong>{this.props.rank}</Strong>
+							Rank <br />
+							<Strong>{this.props.rank}</Strong>
+						</Text>
+						<Text>
+							Mode
+							<br />
+							<Strong>
+								{data.currentLadderMembership.localizedGameMode}
+							</Strong>
 						</Text>
 					</Pane>
+					<LadderTable {...data} />
 				</Pane>
 			</Pane>
 		);

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import {
-	Pane,
-	Heading,
-	Avatar,
-	Strong,
-	Tablist,
-	SidebarTab,
-} from "evergreen-ui";
+import { Pane, Heading, Tablist, SidebarTab } from "evergreen-ui";
 import LadderPreview from "./LadderPreview";
 import LadderNotFound from "./LadderNotFound";
+import DataProvider from "../../utilities/DataProvider";
+
+const regionId = localStorage.getItem("regionId"),
+	region = localStorage.getItem("region"),
+	realmId = localStorage.getItem("realmId"),
+	profileId = localStorage.getItem("profileId");
+let ladderId;
 
 class Ladder extends Component {
 	constructor(props) {
@@ -18,8 +18,8 @@ class Ladder extends Component {
 		};
 	}
 	render() {
-		console.log(this.props);
 		const { currentSeason, previousSeason } = this.props.data;
+
 		return (
 			<React.Fragment>
 				{currentSeason.length === 0 ? (
@@ -59,28 +59,46 @@ class Ladder extends Component {
 									</SidebarTab>
 								</Tablist>
 							))}
-							<Pane padding={16} background="tint1" flex="1">
+							<Pane
+								overflow="scroll"
+								padding={16}
+								background="tint1"
+								flex="1"
+							>
 								{currentSeason[0].ladder.map(
-									(ladder, index) => (
-										<Pane
-											key={ladder.ladderId}
-											id={`panel-${ladder.ladderName}`}
-											role="tabpanel"
-											aria-labelledby={ladder.ladderName}
-											aria-hidden={
-												index !==
-												this.state.selectedIndex
-											}
-											display={
-												index ===
-												this.state.selectedIndex
-													? "block"
-													: "none"
-											}
-										>
-											<LadderPreview {...ladder} />
-										</Pane>
-									)
+									(ladder, index) => {
+										const LadderView = DataProvider(
+											LadderPreview,
+											region,
+											`profile/${regionId}/${realmId}/${profileId}
+										/ladder/${ladder.ladderId}`,
+											{ ...ladder }
+										);
+										return (
+											<Pane
+												key={ladder.ladderId}
+												id={`panel-${
+													ladder.ladderName
+												}`}
+												role="tabpanel"
+												aria-labelledby={
+													ladder.ladderName
+												}
+												aria-hidden={
+													index !==
+													this.state.selectedIndex
+												}
+												display={
+													index ===
+													this.state.selectedIndex
+														? "block"
+														: "none"
+												}
+											>
+												<LadderView />
+											</Pane>
+										);
+									}
 								)}
 							</Pane>
 						</Pane>
