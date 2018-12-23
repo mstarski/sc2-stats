@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Pane, Strong, Heading, Text } from "evergreen-ui";
 import Translator from "../../utilities/Translator";
-import LadderTable from "./LadderTable";
+import LadderTable from "../LadderTable/LadderTable";
 
 class LadderPreview extends Component {
 	constructor(props) {

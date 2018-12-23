@@ -1,6 +1,6 @@
 const React = require("react");
 const { Pane, Button } = require("evergreen-ui");
-const AchievementsNavigation = require("../../dumb-components/AchievementsNavigation/AchievementsNavigation");
+const AchievementsNavigation = require("../AchievementsNavigation/AchievementsNavigation");
 
 function AllAchievements(props) {
 	const {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Pane, Heading, Tablist, SidebarTab } from "evergreen-ui";
-import LadderPreview from "./LadderPreview";
-import LadderNotFound from "./LadderNotFound";
+import LadderPreview from "../../dumb-components/LadderPreview/LadderPreview";
+import LadderNotFound from "../../dumb-components/LadderNotFound/LadderNotFound";
 import DataProvider from "../../utilities/DataProvider";
 
 const regionId = localStorage.getItem("regionId"),
