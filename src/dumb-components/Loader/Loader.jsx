@@ -1,6 +1,6 @@
-const React = require("react");
-const LoaderGif = require("../../../assets/Loading.gif");
-const { Pane } = require("evergreen-ui");
+import React from "react";
+import LoaderGif from "../../../assets/Loading.gif";
+import { Pane } from "evergreen-ui";
 
 function Loader(props) {
 	return (

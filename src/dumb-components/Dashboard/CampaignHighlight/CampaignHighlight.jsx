@@ -1,26 +1,26 @@
 //Packages
-const React = require("react");
-const { Pane, Heading, Button, Badge } = require("evergreen-ui");
+import React from "react";
+import { Pane, Heading, Button, Badge } from "evergreen-ui";
 
 //Campaign Logos
 const WingsOfLiberty = (
 	<img
 		className="expansion_logo"
-		src={require("../../../assets/sc2_wol_logo.png")}
+		src={require("../../../../assets/sc2_wol_logo.png")}
 		alt="WingsOfLiberty"
 	/>
 );
 const HeartOfTheSwarm = (
 	<img
 		className="expansion_logo"
-		src={require("../../../assets/sc2_hots_logo.png")}
+		src={require("../../../../assets/sc2_hots_logo.png")}
 		alt="HeartOfTheSwarm"
 	/>
 );
 const LegacyOfTheVoid = (
 	<img
 		className="expansion_logo"
-		src={require("../../../assets/sc2_lotv_logo.png")}
+		src={require("../../../../assets/sc2_lotv_logo.png")}
 		alt="LegacyOfTheVoid"
 	/>
 );
@@ -102,4 +102,4 @@ function CampaignHighlight(props) {
 	);
 }
 
-module.exports = CampaignHighlight;
+export default CampaignHighlight;

@@ -1,5 +1,5 @@
 //Custom axios config to be used with bnet API
-const axios = require("axios");
+import axios from "axios";
 
 const custom = (region, token) =>
 	axios.create({
@@ -7,4 +7,4 @@ const custom = (region, token) =>
 		headers: { Authorization: `Bearer ${token}` },
 	});
 
-module.exports = custom;
+export default custom;

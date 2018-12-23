@@ -1,5 +1,5 @@
-const React = require("react");
-const { Pane, Heading } = require("evergreen-ui");
+import React from "react";
+import { Pane, Heading } from "evergreen-ui";
 
 function AchievementShowcase(props) {
 	const { showcaseData, ImgOnClick } = props;
@@ -31,4 +31,4 @@ function AchievementShowcase(props) {
 	);
 }
 
-module.exports = AchievementShowcase;
+export default AchievementShowcase;

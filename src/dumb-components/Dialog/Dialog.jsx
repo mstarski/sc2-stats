@@ -1,5 +1,5 @@
-const React = require("react");
-const { Text, Icon, Pane, Dialog } = require("evergreen-ui");
+import React from "react";
+import { Text, Icon, Pane, Dialog } from "evergreen-ui";
 
 function DialogComponent(props) {
 	const {

@@ -1,8 +1,8 @@
-const React = require("react");
-const { SideSheet, Pane, Heading, Card, Button } = require("evergreen-ui");
-const MenuIcon = require("../MenuIcon/MenuIcon");
-const SidesheetContent = require("./SidesheetContent");
-const { withRouter } = require("react-router-dom");
+import React from "react";
+import { SideSheet, Pane, Heading, Card, Button } from "evergreen-ui";
+import MenuIcon from "../MenuIcon/MenuIcon";
+import SidesheetContent from "./SidesheetContent";
+import { withRouter } from "react-router-dom";
 
 class SideSheetComponent extends React.Component {
 	constructor(props) {
@@ -79,4 +79,4 @@ class SideSheetComponent extends React.Component {
 	}
 }
 
-module.exports = withRouter(SideSheetComponent);
+export default withRouter(SideSheetComponent);
