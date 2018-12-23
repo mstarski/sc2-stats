@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { Pane, Heading, Tablist, SidebarTab } from "evergreen-ui";
-import LadderPreview from "../../dumb-components/LadderPreview/LadderPreview";
-import LadderNotFound from "../../dumb-components/LadderNotFound/LadderNotFound";
+import LadderPreview from "../../dumb-components/Ladder/LadderPreview/LadderPreview";
+import LadderNotFound from "../../dumb-components/Ladder/LadderNotFound/LadderNotFound";
 import DataProvider from "../../utilities/DataProvider";
 
 const regionId = localStorage.getItem("regionId"),
 	region = localStorage.getItem("region"),
 	realmId = localStorage.getItem("realmId"),
 	profileId = localStorage.getItem("profileId");
-let ladderId;
 
 class Ladder extends Component {
 	constructor(props) {

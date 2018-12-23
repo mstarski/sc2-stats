@@ -4,10 +4,10 @@ import { Pane, Text, Heading, Avatar } from "evergreen-ui";
 
 //Components
 import raceLogos from "../../utilities/raceLogos";
-import CampaignHighlight from "../../dumb-components/CampaignHighlight/CampaignHighlight";
-import CurrentSeasonHighlight from "../../dumb-components/CurrentSeasonHighlight/CurrentSeasonHighlight";
+import CampaignHighlight from "../../dumb-components/Dashboard/CampaignHighlight/CampaignHighlight";
+import CurrentSeasonHighlight from "../../dumb-components/Dashboard/CurrentSeasonHighlight/CurrentSeasonHighlight";
 import Translator from "../../utilities/Translator";
-import BasicInfo from "../../dumb-components/BasicInfo/BasicInfo";
+import BasicInfo from "../../dumb-components/Dashboard/BasicInfo/BasicInfo";
 
 class Dashboard extends React.Component {
 	constructor(props) {
@@ -87,8 +87,6 @@ class Dashboard extends React.Component {
 
 	render() {
 		const { data } = this.props;
-		console.log(data);
-
 		return (
 			<div>
 				<React.Fragment>

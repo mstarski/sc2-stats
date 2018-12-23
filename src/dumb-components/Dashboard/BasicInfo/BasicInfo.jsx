@@ -1,6 +1,6 @@
 import React from "react";
 import { Pane, Heading, Text, Avatar } from "evergreen-ui";
-import raceLogos from "../../utilities/raceLogos";
+import raceLogos from "../../../utilities/raceLogos";
 
 function BasicInfo(props) {
 	const { data } = props;

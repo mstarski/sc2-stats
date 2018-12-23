@@ -3,9 +3,9 @@ import Loader from "../../dumb-components/Loader/Loader";
 import Dialog from "../../dumb-components/Dialog/Dialog.jsx";
 import _ from "lodash";
 import ReactDOM from "react-dom";
-import AllAchievements from "../../dumb-components/AllAchievements/AllAchievements";
-import { Pane, Heading, Button } from "evergreen-ui";
-import AchievementShowcase from "../../dumb-components/AchievementShowcase/AchivementShowcase";
+import AllAchievements from "../../dumb-components/Achievements/AllAchievements/AllAchievements";
+import { Pane, Button } from "evergreen-ui";
+import AchievementShowcase from "../../dumb-components/Achievements/AchievementShowcase/AchivementShowcase";
 const { readFile } = window.require("fs");
 
 class Achievements extends React.PureComponent {

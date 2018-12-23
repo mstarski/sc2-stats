@@ -1,8 +1,8 @@
 import React from "react";
 import { Pane, Heading, Avatar, Strong } from "evergreen-ui";
-import Translator from "../../utilities/Translator";
-import RaceWins from "./RaceWins";
-import Levels from "./Levels";
+import Translator from "../../../utilities/Translator";
+import RaceWins from "../RaceWins/RaceWins";
+import Levels from "../Levels/Levels";
 
 function CurrentSeasonHighlight(props) {
 	const { career, swarmLevels } = props;
