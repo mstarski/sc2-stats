@@ -19,7 +19,6 @@ function DialogComponent(props) {
 				intent="none"
 				hasFooter={false}
 				onCloseComplete={props.onClose}
-				confirmLabel="Delete Something"
 			>
 				<Pane display="flex" flexFlow="column">
 					<img

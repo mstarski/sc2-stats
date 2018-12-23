@@ -1,6 +1,6 @@
 import React from "react";
 import Loader from "../../dumb-components/Loader/Loader";
-import Dialog from "../../dumb-components/Dialog/Dialog.jsx";
+import Dialog from "../../dumb-components/Achievements/AchievementsDialog/AchievementsDialog";
 import _ from "lodash";
 import ReactDOM from "react-dom";
 import AllAchievements from "../../dumb-components/Achievements/AllAchievements/AllAchievements";
