@@ -7,4 +7,4 @@ function compareFunction(a, b) {
 	return 0;
 }
 
-module.exports = compareFunction;
+export default compareFunction;

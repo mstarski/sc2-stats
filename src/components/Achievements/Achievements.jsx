@@ -1,12 +1,12 @@
-const React = require("react");
+import React from "react";
+import Loader from "../../dumb-components/Loader/Loader";
+import Dialog from "../../dumb-components/Dialog/Dialog.jsx";
+import _ from "lodash";
+import ReactDOM from "react-dom";
+import AllAchievements from "../../dumb-components/Achievements/AllAchievements/AllAchievements";
+import { Pane, Button } from "evergreen-ui";
+import AchievementShowcase from "../../dumb-components/Achievements/AchievementShowcase/AchivementShowcase";
 const { readFile } = window.require("fs");
-const { Pane, Heading, Button } = require("evergreen-ui");
-const AchievementShowcase = require("./AchivementShowcase");
-const Loader = require("../../dumb-components/Loader/Loader");
-const Dialog = require("../../dumb-components/Dialog/Dialog.jsx");
-const _ = require("lodash");
-const ReactDOM = require("react-dom");
-const AllAchievements = require("./AllAchievements");
 
 class Achievements extends React.PureComponent {
 	constructor(props) {
@@ -139,4 +139,4 @@ class Achievements extends React.PureComponent {
 	}
 }
 
-module.exports = Achievements;
+export default Achievements;

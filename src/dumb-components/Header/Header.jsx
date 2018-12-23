@@ -1,6 +1,6 @@
-const React = require("react");
-const { Heading, Pane, Badge } = require("evergreen-ui");
-const SideSheetComponent = require("../SideSheet/SideSheet");
+import React from "react";
+import { Heading, Pane, Badge } from "evergreen-ui";
+import SideSheetComponent from "../SideSheet/SideSheet";
 
 function Header(props) {
 	return (

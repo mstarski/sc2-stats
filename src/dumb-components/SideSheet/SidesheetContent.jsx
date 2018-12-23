@@ -1,6 +1,6 @@
-const React = require("react");
-const { Pane, TabNavigation, SidebarTab } = require("evergreen-ui");
-const BroodLordGIF = require("../../../assets/carbot_broodlord.gif");
+import React from "react";
+import { Pane, TabNavigation, SidebarTab } from "evergreen-ui";
+import BroodLordGIF from "../../../assets/carbot_broodlord.gif";
 
 function SidesheetContent(props) {
 	const { handlers } = props;
@@ -59,4 +59,4 @@ function SidesheetContent(props) {
 	);
 }
 
-module.exports = SidesheetContent;
+export default SidesheetContent;

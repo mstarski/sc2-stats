@@ -1,12 +1,12 @@
-const React = require("react");
-const {
+import React from "react";
+import {
 	Heading,
 	Text,
 	Pane,
 	UnorderedList,
 	ListItem,
 	Strong,
-} = require("evergreen-ui");
+} from "evergreen-ui";
 
 function Levels(props) {
 	const { zerg, protoss, terran, level } = props.data;

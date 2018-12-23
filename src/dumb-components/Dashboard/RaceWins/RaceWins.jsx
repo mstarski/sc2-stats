@@ -1,11 +1,11 @@
-const React = require("react");
-const { Pane, Text, Heading } = require("evergreen-ui");
+import React from "react";
+import { Pane, Text, Heading } from "evergreen-ui";
 
 //Assets
-const ZergGIF = require("../../../assets/carbot_zergling.gif");
-const TerranGIF = require("../../../assets/carbot_marine.gif");
-const ProtossGIF = require("../../../assets/carbot_zealot.gif");
-const Trophy = require("../../../assets/trophy_icon.png");
+import ZergGIF from "../../../../assets/carbot_zergling.gif";
+import TerranGIF from "../../../../assets/carbot_marine.gif";
+import ProtossGIF from "../../../../assets/carbot_zealot.gif";
+import Trophy from "../../../../assets/trophy_icon.png";
 
 function RaceWins(props) {
 	const assetProperties = {
@@ -43,4 +43,4 @@ function RaceWins(props) {
 	);
 }
 
-module.exports = RaceWins;
+export default RaceWins;

@@ -1,5 +1,5 @@
-const React = require("react");
-const { Pane, SearchInput, Button } = require("evergreen-ui");
+import React from "react";
+import { Pane, SearchInput, Button } from "evergreen-ui";
 class AchievementsNavigation extends React.Component {
 	constructor(props) {
 		super(props);
@@ -72,4 +72,4 @@ class AchievementsNavigation extends React.Component {
 	}
 }
 
-module.exports = AchievementsNavigation;
+export default AchievementsNavigation;

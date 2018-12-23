@@ -1,8 +1,12 @@
-const React = require('react');
-const ReactDom = require('react-dom');
-const { HashRouter } = require('react-router-dom');
+import React from "react";
+import ReactDom from "react-dom";
+import { HashRouter } from "react-router-dom";
 
-const App = require('./components/App.jsx');
+import App from "./components/App.jsx";
 
-
-ReactDom.render(<HashRouter><App /></HashRouter>, document.getElementById("root"));
+ReactDom.render(
+	<HashRouter>
+		<App />
+	</HashRouter>,
+	document.getElementById("root")
+);

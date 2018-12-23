@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Table, Pane } from "evergreen-ui";
+import React from "react";
+import { Table } from "evergreen-ui";
 
 function LadderTable(props) {
 	console.log(props);
