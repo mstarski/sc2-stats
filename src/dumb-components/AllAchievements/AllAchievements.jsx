@@ -1,6 +1,6 @@
-const React = require("react");
-const { Pane, Button } = require("evergreen-ui");
-const AchievementsNavigation = require("../AchievementsNavigation/AchievementsNavigation");
+import React from "react";
+import { Pane, Button } from "evergreen-ui";
+import AchievementsNavigation from "../AchievementsNavigation/AchievementsNavigation";
 
 function AllAchievements(props) {
 	const {
@@ -52,4 +52,4 @@ function AllAchievements(props) {
 		</React.Fragment>
 	);
 }
-module.exports = AllAchievements;
+export default AllAchievements;

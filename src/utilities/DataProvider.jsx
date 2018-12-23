@@ -1,11 +1,10 @@
 //Packages
-const React = require("react");
-const request = require("../utilities/custom-axios");
-const { Pane, Text, Heading } = require("evergreen-ui");
+import React from "react";
+import request from "../utilities/custom-axios";
 
 //Components
-const Loader = require("../dumb-components/Loader/Loader");
-const ErrorMessage = require("../dumb-components/ErrorMessage/ErrorMessage");
+import Loader from "../dumb-components/Loader/Loader";
+import ErrorMessage from "../dumb-components/ErrorMessage/ErrorMessage";
 
 function DataProvider(Component, region, dataSource, props) {
 	return class DataProviderComponent extends React.Component {
@@ -73,4 +72,4 @@ function DataProvider(Component, region, dataSource, props) {
 	};
 }
 
-module.exports = DataProvider;
+export default DataProvider;

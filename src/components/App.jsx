@@ -1,16 +1,16 @@
 //Packages
-const React = require("react");
-const { Route, Switch, Redirect, withRouter } = require("react-router-dom");
+import React from "react";
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 const { ipcRenderer } = window.require("electron");
 
 //Components
-const Header = require("../dumb-components/Header/Header");
-const Login = require("./Login/Login");
-const ChooseProfile = require("./ChooseProfile/ChooseProfile");
-const DataProvider = require("../utilities/DataProvider");
-const Dashboard = require("./Dashboard/Dashboard");
-const Achievements = require("./Achievements/Achievements");
-const Ladder = require("./Ladder/Ladder").default;
+import Header from "../dumb-components/Header/Header";
+import Login from "./Login/Login";
+import ChooseProfile from "./ChooseProfile/ChooseProfile";
+import DataProvider from "../utilities/DataProvider";
+import Dashboard from "./Dashboard/Dashboard";
+import Achievements from "./Achievements/Achievements";
+import Ladder from "./Ladder/Ladder";
 
 class App extends React.Component {
 	constructor(props) {
@@ -85,4 +85,4 @@ class App extends React.Component {
 	}
 }
 
-module.exports = withRouter(App);
+export default withRouter(App);

@@ -1,6 +1,6 @@
-const React = require("react");
-const { Heading, Text, Pane } = require("evergreen-ui");
-const Lurker = require("../../../assets/Lurker.gif");
+import React from "react";
+import { Heading, Text, Pane } from "evergreen-ui";
+import Lurker from "../../../assets/Lurker.gif";
 
 function ErrorMessage(props) {
 	return (
@@ -22,4 +22,4 @@ function ErrorMessage(props) {
 	);
 }
 
-module.exports = ErrorMessage;
+export default ErrorMessage;

@@ -1,8 +1,8 @@
-const React = require("react");
-const { Pane, Heading, Avatar, Strong } = require("evergreen-ui");
-const Translator = require("../../utilities/Translator");
-const RaceWins = require("./RaceWins");
-const Levels = require("./Levels");
+import React from "react";
+import { Pane, Heading, Avatar, Strong } from "evergreen-ui";
+import Translator from "../../utilities/Translator";
+import RaceWins from "./RaceWins";
+import Levels from "./Levels";
 
 function CurrentSeasonHighlight(props) {
 	const { career, swarmLevels } = props;

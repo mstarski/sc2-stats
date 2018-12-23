@@ -1,6 +1,6 @@
 //Packages
-const React = require("react");
-const { Pane, Heading, Button, Badge } = require("evergreen-ui");
+import React from "react";
+import { Pane, Heading, Button, Badge } from "evergreen-ui";
 
 //Campaign Logos
 const WingsOfLiberty = (
@@ -102,4 +102,4 @@ function CampaignHighlight(props) {
 	);
 }
 
-module.exports = CampaignHighlight;
+export default CampaignHighlight;

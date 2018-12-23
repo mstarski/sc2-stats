@@ -1,6 +1,6 @@
-const React = require("react");
-const { Pane, Heading, Text, Avatar } = require("evergreen-ui");
-const raceLogos = require('../../utilities/raceLogos');
+import React from "react";
+import { Pane, Heading, Text, Avatar } from "evergreen-ui";
+import raceLogos from "../../utilities/raceLogos";
 
 function BasicInfo(props) {
 	const { data } = props;
@@ -35,4 +35,4 @@ function BasicInfo(props) {
 	);
 }
 
-module.exports = BasicInfo;
+export default BasicInfo;

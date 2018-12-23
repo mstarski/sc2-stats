@@ -1,13 +1,13 @@
 //Packages
-const React = require("react");
-const { Pane, Text, Heading, Avatar } = require("evergreen-ui");
+import React from "react";
+import { Pane, Text, Heading, Avatar } from "evergreen-ui";
 
 //Components
-const raceLogos = require("../../utilities/raceLogos");
-const CampaignHighlight = require("../../dumb-components/CampaignHighlight/CampaignHighlight");
-const CurrentSeasonHighlight = require("../../dumb-components/CurrentSeasonHighlight/CurrentSeasonHighlight");
-const Translator = require("../../utilities/Translator");
-const BasicInfo = require("../../dumb-components/BasicInfo/BasicInfo");
+import raceLogos from "../../utilities/raceLogos";
+import CampaignHighlight from "../../dumb-components/CampaignHighlight/CampaignHighlight";
+import CurrentSeasonHighlight from "../../dumb-components/CurrentSeasonHighlight/CurrentSeasonHighlight";
+import Translator from "../../utilities/Translator";
+import BasicInfo from "../../dumb-components/BasicInfo/BasicInfo";
 
 class Dashboard extends React.Component {
 	constructor(props) {
@@ -139,4 +139,4 @@ class Dashboard extends React.Component {
 	}
 }
 
-module.exports = Dashboard;
+export default Dashboard;

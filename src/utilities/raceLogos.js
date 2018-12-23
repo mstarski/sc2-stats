@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	zerg: {
 		logo: require("../../assets/zerg_logo.png"),
 		size: [50, 50],

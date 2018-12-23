@@ -1,6 +1,6 @@
-const React = require("react");
-const { Pane, Text, Avatar, Badge } = require("evergreen-ui");
-const Translator = require("../../utilities/Translator");
+import React from "react";
+import { Pane, Text, Avatar, Badge } from "evergreen-ui";
+import Translator from "../../utilities/Translator";
 
 function AccountThumbnail(props) {
 	const { profile_name, avatar, region } = props;
@@ -32,4 +32,4 @@ function AccountThumbnail(props) {
 	);
 }
 
-module.exports = AccountThumbnail;
+export default AccountThumbnail;

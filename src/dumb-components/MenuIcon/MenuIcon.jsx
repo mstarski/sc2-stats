@@ -1,6 +1,6 @@
-const React = require("react");
-const Marine = require("../../../assets/marine.png");
-const { Button, Pane } = require("evergreen-ui");
+import React from "react";
+import Marine from "../../../assets/marine.png";
+import { Button, Pane } from "evergreen-ui";
 
 function MenuIcon(props) {
 	return (

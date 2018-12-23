@@ -1,11 +1,11 @@
 //Packages
-const React = require("react");
-const { Pane, Text, Heading } = require("evergreen-ui");
-const { withRouter } = require("react-router-dom");
+import React from "react";
+import { Pane, Text, Heading } from "evergreen-ui";
+import { withRouter } from "react-router-dom";
 
 //Components
-const AccountThumbnail = require("../../dumb-components/AccountThumbnail/AccountThumbnail.jsx");
-const Translator = require("../../utilities/Translator");
+import AccountThumbnail from "../../dumb-components/AccountThumbnail/AccountThumbnail.jsx";
+import Translator from "../../utilities/Translator";
 
 class ChooseProfile extends React.Component {
 	constructor(props) {
@@ -67,4 +67,4 @@ class ChooseProfile extends React.Component {
 	}
 }
 
-module.exports = withRouter(ChooseProfile);
+export default withRouter(ChooseProfile);
