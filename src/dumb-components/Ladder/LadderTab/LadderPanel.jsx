@@ -5,7 +5,7 @@ import DataProvider from "../../../utilities/DataProvider";
 import GrandmasterPanel from "../Grandmaster/GrandmasterPanel";
 
 function LadderPanel(props) {
-	const { currentSeason, context } = props;
+	const { currentSeason, context, highlightPlayer } = props;
 	const regionId = localStorage.getItem("regionId"),
 		region = localStorage.getItem("region"),
 		realmId = localStorage.getItem("realmId"),
@@ -15,7 +15,7 @@ function LadderPanel(props) {
 		GrandmasterPanel,
 		region,
 		`ladder/grandmaster/${regionId}`,
-		{ context: context, currentSeason: currentSeason }
+		{ context: context, currentSeason, highlightPlayer }
 	);
 
 	return (
@@ -33,6 +33,7 @@ function LadderPanel(props) {
 					}`,
 					{
 						...ladder,
+						highlightPlayer,
 					}
 				);
 				return (
