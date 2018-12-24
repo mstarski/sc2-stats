@@ -9,3 +9,4 @@
 -   Write a good documentation
 -   Implement search logic throughout the application
 -   Implement team ladder preview
+-   Fix earned achievements display
