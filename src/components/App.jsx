@@ -34,7 +34,7 @@ class App extends React.Component {
 		const realmId = localStorage.getItem("realmId");
 
 		return (
-			<div>
+			<div style={{ width: "100%" }}>
 				{noHeaderRoutes.includes(
 					this.props.history.location.pathname
 				) ? null : (
@@ -47,7 +47,7 @@ class App extends React.Component {
 						path="/choose-profile"
 						component={DataProvider(
 							ChooseProfile,
-							region,
+							"eu",
 							`/player/${id}`
 						)}
 					/>
