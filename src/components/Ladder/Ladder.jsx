@@ -35,7 +35,6 @@ class Ladder extends React.PureComponent {
 							<LadderPanel
 								currentSeason={currentSeason}
 								context={this}
-								highlightPlayer={this.highlightPlayer}
 							/>
 						</Pane>
 					</Pane>

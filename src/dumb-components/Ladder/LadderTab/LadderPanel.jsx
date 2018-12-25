@@ -5,11 +5,12 @@ import DataProvider from "../../../utilities/DataProvider";
 import GrandmasterPanel from "../Grandmaster/GrandmasterPanel";
 
 function LadderPanel(props) {
+	const { currentSeason, context, highlightPlayer } = props;
 	const regionId = localStorage.getItem("regionId"),
 		region = localStorage.getItem("region"),
 		realmId = localStorage.getItem("realmId"),
 		profileId = localStorage.getItem("profileId");
-	const { currentSeason, context, highlightPlayer } = props;
+
 	const GrandMasterPanel = DataProvider(
 		GrandmasterPanel,
 		region,
