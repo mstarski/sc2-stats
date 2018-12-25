@@ -11,12 +11,17 @@ function LadderPanel(props) {
 		realmId = localStorage.getItem("realmId"),
 		profileId = localStorage.getItem("profileId");
 
-	const GrandMasterPanel = DataProvider(
-		GrandmasterPanel,
-		region,
-		`ladder/grandmaster/${regionId}`,
-		{ context: context, currentSeason, highlightPlayer }
-	);
+	//Prevent from loading grandmaster ladder before selecting it
+	//currentSeason[0].ladder.length is the grandmaster league's index
+	const GrandMasterPanel =
+		context.state.selectedIndex === currentSeason[0].ladder.length
+			? DataProvider(
+					GrandmasterPanel,
+					region,
+					`ladder/grandmaster/${regionId}`,
+					{ context: context, currentSeason, highlightPlayer }
+			  )
+			: () => <div />;
 
 	return (
 		<React.Fragment>
