@@ -24,13 +24,7 @@ function LadderTable(props) {
 				{props.ladderTeams.map((player, index) => {
 					const favRace = player.teamMembers[0].favoriteRace;
 					return (
-						<Table.Row
-							key={index}
-							isSelectable
-							onSelect={() =>
-								props.highlightPlayer(player.teamMembers[0])
-							}
-						>
+						<Table.Row key={index} isSelectable onSelect={() => {}}>
 							<Table.TextCell>{index + 1}</Table.TextCell>
 							<Table.TextCell>
 								{favRace === "random" ? (

@@ -13,10 +13,7 @@ function LadderPreview(props) {
 				alignItems="center"
 			>
 				<LadderHeader {...props} />
-				<LadderTable
-					{...data}
-					highlightPlayer={props.highlightPlayer}
-				/>
+				<LadderTable {...data} />
 			</Pane>
 		</Pane>
 	);
