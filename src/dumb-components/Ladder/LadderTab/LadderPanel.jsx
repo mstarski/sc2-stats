@@ -40,6 +40,8 @@ function LadderPanel(props) {
 						{
 							...ladder,
 							highlightPlayer,
+							tabIndex: context.state.selectedIndex,
+							selfIndex: index,
 						}
 					);
 					return (

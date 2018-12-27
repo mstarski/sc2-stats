@@ -13,7 +13,11 @@ function LadderPreview(props) {
 				alignItems="center"
 			>
 				<LadderHeader {...props} />
-				<LadderTable {...data} />
+				<LadderTable
+					{...data}
+					tabIndex={props.tabIndex}
+					selfIndex={props.selfIndex}
+				/>
 			</Pane>
 		</Pane>
 	);

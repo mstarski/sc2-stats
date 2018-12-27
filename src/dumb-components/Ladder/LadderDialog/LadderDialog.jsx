@@ -1,5 +1,5 @@
 import React from "react";
-import { Dialog } from "evergreen-ui";
+import { Dialog, Pane, Heading, Strong, Text } from "evergreen-ui";
 
 function LadderDialog(props) {
 	return (

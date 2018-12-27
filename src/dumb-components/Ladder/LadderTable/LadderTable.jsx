@@ -1,8 +1,9 @@
 import React from "react";
-import { Table, Avatar, Dialog } from "evergreen-ui";
-import raceLogos from "../../../utilities/raceLogos";
+import { Table } from "evergreen-ui";
+import LadderDialog from "../LadderDialog/LadderDialog";
+import PlayerCell from "../PlayerCell/PlayerCell";
 
-class LadderTable extends React.Component {
+class LadderTable extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -22,84 +23,71 @@ class LadderTable extends React.Component {
 	}
 
 	render() {
+		const { tabIndex, selfIndex } = this.props;
 		return (
 			<React.Fragment>
-				<Dialog
-					isShown={this.state.dialogIsShown}
-					hasFooter={false}
-					hasHeader={false}
-					onCloseComplete={this.closeDialog}
-				>
-					<h1>test</h1>
-				</Dialog>
-				<Table
-					width="100%"
-					gridColumn="1/4"
-					justifySelf="center"
-					marginTop="2rem"
-				>
-					<Table.Head>
-						<Table.HeaderCell>No.</Table.HeaderCell>
-						<Table.HeaderCell />
-						<Table.HeaderCell>Player</Table.HeaderCell>
-						<Table.HeaderCell>Points</Table.HeaderCell>
-						<Table.HeaderCell>MMR</Table.HeaderCell>
-						<Table.HeaderCell>Wins</Table.HeaderCell>
-						<Table.HeaderCell>Losses</Table.HeaderCell>
-					</Table.Head>
-					<Table.Body>
-						{this.props.ladderTeams.map((player, index) => {
-							const favRace = player.teamMembers[0].favoriteRace;
-							return (
-								<Table.Row
-									key={index}
-									isSelectable
-									onSelect={() =>
-										this.highlightPlayer(player)
-									}
-								>
-									<Table.TextCell>{index + 1}</Table.TextCell>
-									<Table.TextCell>
-										{favRace === "random" ? (
-											<Avatar size={30} name="R" />
-										) : (
-											<img
-												style={{
-													width:
-														raceLogos[favRace]
-															.size[0] * 0.5,
-													height:
-														raceLogos[favRace]
-															.size[1] * 0.5,
-												}}
-												src={raceLogos[favRace].logo}
-												alt={
+				{tabIndex === selfIndex ? (
+					<React.Fragment>
+						<LadderDialog
+							isShown={this.state.dialogIsShown}
+							onClose={this.closeDialog}
+						/>
+						<Table
+							width="100%"
+							gridColumn="1/4"
+							justifySelf="center"
+							marginTop="2rem"
+						>
+							<Table.Head>
+								<Table.HeaderCell>No.</Table.HeaderCell>
+								<Table.HeaderCell />
+								<Table.HeaderCell>Player</Table.HeaderCell>
+								<Table.HeaderCell>Points</Table.HeaderCell>
+								<Table.HeaderCell>MMR</Table.HeaderCell>
+								<Table.HeaderCell>Wins</Table.HeaderCell>
+								<Table.HeaderCell>Losses</Table.HeaderCell>
+							</Table.Head>
+							<Table.Body>
+								{this.props.ladderTeams.map((player, index) => {
+									const favRace =
+										player.teamMembers[0].favoriteRace;
+									return (
+										<Table.Row
+											key={index}
+											isSelectable
+											onSelect={() =>
+												this.highlightPlayer(player)
+											}
+										>
+											<Table.TextCell>
+												{index + 1}
+											</Table.TextCell>
+											<PlayerCell favRace={favRace} />
+											<Table.TextCell>
+												{
 													player.teamMembers[0]
-														.favoriteRace
+														.displayName
 												}
-											/>
-										)}
-									</Table.TextCell>
-									<Table.TextCell>
-										{player.teamMembers[0].displayName}
-									</Table.TextCell>
-									<Table.TextCell>
-										{player.points}
-									</Table.TextCell>
-									<Table.TextCell>
-										{player.mmr}
-									</Table.TextCell>
-									<Table.TextCell>
-										{player.wins}
-									</Table.TextCell>
-									<Table.TextCell>
-										{player.losses}
-									</Table.TextCell>
-								</Table.Row>
-							);
-						})}
-					</Table.Body>
-				</Table>
+											</Table.TextCell>
+											<Table.TextCell>
+												{player.points}
+											</Table.TextCell>
+											<Table.TextCell>
+												{player.mmr}
+											</Table.TextCell>
+											<Table.TextCell>
+												{player.wins}
+											</Table.TextCell>
+											<Table.TextCell>
+												{player.losses}
+											</Table.TextCell>
+										</Table.Row>
+									);
+								})}
+							</Table.Body>
+						</Table>
+					</React.Fragment>
+				) : null}
 			</React.Fragment>
 		);
 	}

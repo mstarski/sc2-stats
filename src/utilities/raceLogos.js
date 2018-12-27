@@ -16,6 +16,7 @@ export default {
 		size: [50, 50],
 	},
 	null: {
+		logo: null,
 		size: [50, 50],
 	},
 };
