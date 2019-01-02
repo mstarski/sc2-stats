@@ -11,10 +11,23 @@ class Ladder extends React.PureComponent {
 			selectedIndex: 0,
 			isGrandmaster: false,
 		};
+		this.setIndexHandler = this.setIndexHandler.bind(this);
+		this.setGrandmasterHandler = this.setGrandmasterHandler.bind(this);
+	}
+
+	setIndexHandler(index) {
+		this.setState({ selectedIndex: index });
+	}
+
+	setGrandmasterHandler() {
+		this.setState(state => ({
+			isGrandmaster: !state.isGrandmaster,
+		}));
 	}
 
 	render() {
 		const { currentSeason } = this.props.data;
+		const { selectedIndex, isGrandmaster } = this.state;
 
 		return (
 			<React.Fragment>
@@ -29,12 +42,15 @@ class Ladder extends React.PureComponent {
 						</Pane>
 						<Pane display="flex" height={"80vh"} padding={"1rem"}>
 							<LadderTablist
+								selectedIndex={selectedIndex}
+								setIndex={this.setIndexHandler}
 								currentSeason={currentSeason}
-								context={this}
 							/>
 							<LadderPanel
+								selectedIndex={selectedIndex}
+								setGrandmaster={this.setGrandmasterHandler}
 								currentSeason={currentSeason}
-								context={this}
+								isGrandmaster={isGrandmaster}
 							/>
 						</Pane>
 					</Pane>

@@ -5,7 +5,13 @@ import DataProvider from "../../../utilities/DataProvider";
 import GrandmasterPanel from "../Grandmaster/GrandmasterPanel";
 
 function LadderPanel(props) {
-	const { currentSeason, context, highlightPlayer } = props;
+	const {
+		currentSeason,
+		highlightPlayer,
+		selectedIndex,
+		setGrandmaster,
+		isGrandmaster,
+	} = props;
 	const regionId = localStorage.getItem("regionId"),
 		region = localStorage.getItem("region"),
 		realmId = localStorage.getItem("realmId"),
@@ -14,12 +20,12 @@ function LadderPanel(props) {
 	//Prevent from loading grandmaster ladder before selecting it
 	//currentSeason[0].ladder.length is the grandmaster league's index
 	const GrandMasterPanel =
-		context.state.selectedIndex === currentSeason[0].ladder.length
+		selectedIndex === currentSeason[0].ladder.length
 			? DataProvider(
 					GrandmasterPanel,
 					region,
 					`ladder/grandmaster/${regionId}`,
-					{ context: context, currentSeason, highlightPlayer }
+					{ selectedIndex, currentSeason, highlightPlayer }
 			  )
 			: () => <div />;
 
@@ -27,10 +33,7 @@ function LadderPanel(props) {
 		<React.Fragment>
 			<Pane overflow="scroll" padding={16} background="tint1" flex="1">
 				{currentSeason[0].ladder.map((ladder, index) => {
-					if (ladder.league === "GRANDMASTER")
-						context.setState({
-							isGrandmaster: true,
-						});
+					if (ladder.league === "GRANDMASTER") setGrandmaster();
 					const LadderView = DataProvider(
 						LadderPreview,
 						region,
@@ -40,7 +43,7 @@ function LadderPanel(props) {
 						{
 							...ladder,
 							highlightPlayer,
-							tabIndex: context.state.selectedIndex,
+							tabIndex: selectedIndex,
 							selfIndex: index,
 						}
 					);
@@ -50,18 +53,14 @@ function LadderPanel(props) {
 							id={`panel-${ladder.ladderName}`}
 							role="tabpanel"
 							aria-labelledby={ladder.ladderName}
-							aria-hidden={index !== context.state.selectedIndex}
-							display={
-								index === context.state.selectedIndex
-									? "block"
-									: "none"
-							}
+							aria-hidden={index !== selectedIndex}
+							display={index === selectedIndex ? "block" : "none"}
 						>
 							<LadderView />
 						</Pane>
 					);
 				})}
-				{context.state.isGrandmaster ? null : <GrandMasterPanel />}
+				{isGrandmaster ? null : <GrandMasterPanel />}
 			</Pane>
 		</React.Fragment>
 	);

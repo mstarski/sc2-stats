@@ -4,7 +4,7 @@ import LadderTable from "../LadderTable/LadderTable";
 import LadderHeader from "../LadderHeader/LadderHeader";
 
 function GrandmasterPanel(props) {
-	const { currentSeason } = props;
+	const { currentSeason, selectedIndex } = props;
 	console.log(props);
 	return (
 		<Pane
@@ -12,10 +12,7 @@ function GrandmasterPanel(props) {
 			id={`panel-grandmaster`}
 			role="tabpanel"
 			aria-labelledby={"Grandmaster"}
-			aria-hidden={
-				currentSeason[0].ladder.length !==
-				props.context.state.selectedIndex
-			}
+			aria-hidden={currentSeason[0].ladder.length !== selectedIndex}
 		>
 			<Pane
 				display="grid"

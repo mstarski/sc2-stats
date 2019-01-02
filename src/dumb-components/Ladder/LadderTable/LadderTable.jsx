@@ -15,7 +15,10 @@ class LadderTable extends React.PureComponent {
 	}
 
 	highlightPlayer(playerData) {
-		this.setState({ dialogIsShown: true, highlightPlayerData: playerData });
+		this.setState({
+			dialogIsShown: true,
+			highlightedPlayer: playerData.teamMembers[0].id,
+		});
 	}
 
 	closeDialog() {
@@ -31,6 +34,7 @@ class LadderTable extends React.PureComponent {
 						<LadderDialog
 							isShown={this.state.dialogIsShown}
 							onClose={this.closeDialog}
+							player={this.state.highlightedPlayer}
 						/>
 						<Table
 							width="100%"

@@ -2,6 +2,7 @@ import React from "react";
 import { Dialog, Pane, Heading, Strong, Text } from "evergreen-ui";
 
 function LadderDialog(props) {
+	console.log(props);
 	return (
 		<Dialog
 			isShown={props.isShown}
