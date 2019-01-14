@@ -11,4 +11,4 @@
 -   Implement team ladder preview
 -   Fix earned achievements display
 -   Add ESLint
--   Try decorators instead of standard hocsw
+-   Try decorators instead of standard hocs
