@@ -1,23 +1,33 @@
-import React, { Component } from "react";
-import { Pane, Heading, Tablist, SidebarTab } from "evergreen-ui";
-import LadderPreview from "../../dumb-components/Ladder/LadderPreview/LadderPreview";
+import React from "react";
+import { Pane, Heading } from "evergreen-ui";
 import LadderNotFound from "../../dumb-components/Ladder/LadderNotFound/LadderNotFound";
-import DataProvider from "../../utilities/DataProvider";
+import LadderTablist from "../../dumb-components/Ladder/LadderTab/LadderTablist";
+import LadderPanel from "../../dumb-components/Ladder/LadderTab/LadderPanel";
 
-const regionId = localStorage.getItem("regionId"),
-	region = localStorage.getItem("region"),
-	realmId = localStorage.getItem("realmId"),
-	profileId = localStorage.getItem("profileId");
-
-class Ladder extends Component {
+class Ladder extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
 			selectedIndex: 0,
+			isGrandmaster: false,
 		};
+		this.setIndexHandler = this.setIndexHandler.bind(this);
+		this.setGrandmasterHandler = this.setGrandmasterHandler.bind(this);
 	}
+
+	setIndexHandler(index) {
+		this.setState({ selectedIndex: index });
+	}
+
+	setGrandmasterHandler() {
+		this.setState(state => ({
+			isGrandmaster: !state.isGrandmaster,
+		}));
+	}
+
 	render() {
-		const { currentSeason, previousSeason } = this.props.data;
+		const { currentSeason } = this.props.data;
+		const { selectedIndex, isGrandmaster } = this.state;
 
 		return (
 			<React.Fragment>
@@ -31,75 +41,17 @@ class Ladder extends Component {
 							</Heading>
 						</Pane>
 						<Pane display="flex" height={"80vh"} padding={"1rem"}>
-							{currentSeason[0].ladder.map((ladder, index) => (
-								<Tablist
-									key={ladder.ladderId}
-									marginBottom={16}
-									flexBasis={240}
-									marginRight={24}
-								>
-									<SidebarTab
-										id={ladder.ladderId}
-										onSelect={() =>
-											this.setState({
-												selectedIndex: index,
-											})
-										}
-										isSelected={
-											index === this.state.selectedIndex
-										}
-										aria-controls={`panel-${
-											ladder.ladderName
-										}`}
-									>
-										{`${ladder.ladderName} - ${
-											ladder.league
-										} ${ladder.matchMakingQueue}`}
-									</SidebarTab>
-								</Tablist>
-							))}
-							<Pane
-								overflow="scroll"
-								padding={16}
-								background="tint1"
-								flex="1"
-							>
-								{currentSeason[0].ladder.map(
-									(ladder, index) => {
-										const LadderView = DataProvider(
-											LadderPreview,
-											region,
-											`profile/${regionId}/${realmId}/${profileId}
-										/ladder/${ladder.ladderId}`,
-											{ ...ladder }
-										);
-										return (
-											<Pane
-												key={ladder.ladderId}
-												id={`panel-${
-													ladder.ladderName
-												}`}
-												role="tabpanel"
-												aria-labelledby={
-													ladder.ladderName
-												}
-												aria-hidden={
-													index !==
-													this.state.selectedIndex
-												}
-												display={
-													index ===
-													this.state.selectedIndex
-														? "block"
-														: "none"
-												}
-											>
-												<LadderView />
-											</Pane>
-										);
-									}
-								)}
-							</Pane>
+							<LadderTablist
+								selectedIndex={selectedIndex}
+								setIndex={this.setIndexHandler}
+								currentSeason={currentSeason}
+							/>
+							<LadderPanel
+								selectedIndex={selectedIndex}
+								setGrandmaster={this.setGrandmasterHandler}
+								currentSeason={currentSeason}
+								isGrandmaster={isGrandmaster}
+							/>
 						</Pane>
 					</Pane>
 				)}

@@ -11,7 +11,12 @@ export default {
 		logo: require("../../assets/protoss_logo.png"),
 		size: [30, 60],
 	},
+	random: {
+		logo: null,
+		size: [50, 50],
+	},
 	null: {
+		logo: null,
 		size: [50, 50],
 	},
 };

@@ -1,54 +1,26 @@
 import React from "react";
-import { Pane, Strong, Heading, Text } from "evergreen-ui";
-import Translator from "../../../utilities/Translator";
+import { Pane } from "evergreen-ui";
 import LadderTable from "../LadderTable/LadderTable";
+import LadderHeader from "../LadderHeader/LadderHeader";
 
-class LadderPreview extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		const { data } = this.props;
-		return (
-			<Pane>
-				<Pane
-					display="grid"
-					gridTemplateColumns="20% 70% "
-					alignItems="center"
-				>
-					<img
-						name={this.props.league}
-						src={Translator.rankToIcon(this.props.league)}
-						style={{ width: 90, height: 100 }}
-						alt="league_image"
-					/>
-					<Pane display="flex" justifyContent="space-around">
-						<Text>
-							Ladder Name <br />
-							<Strong>{this.props.ladderName}</Strong>
-						</Text>
-						<Text>
-							Ladder Id <br />
-							<Strong>{this.props.ladderId}</Strong>
-						</Text>
-						<Text>
-							Rank <br />
-							<Strong>{this.props.rank}</Strong>
-						</Text>
-						<Text>
-							Mode
-							<br />
-							<Strong>
-								{data.currentLadderMembership.localizedGameMode}
-							</Strong>
-						</Text>
-					</Pane>
-					<LadderTable {...data} />
-				</Pane>
+function LadderPreview(props) {
+	const { data } = props;
+	return (
+		<Pane>
+			<Pane
+				display="grid"
+				gridTemplateColumns="20% 70% "
+				alignItems="center"
+			>
+				<LadderHeader {...props} />
+				<LadderTable
+					{...data}
+					tabIndex={props.tabIndex}
+					selfIndex={props.selfIndex}
+				/>
 			</Pane>
-		);
-	}
+		</Pane>
+	);
 }
 
 export default LadderPreview;
