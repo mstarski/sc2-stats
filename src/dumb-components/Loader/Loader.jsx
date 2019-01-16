@@ -1,5 +1,5 @@
 import React from "react";
-import LoaderGif from "../../../assets/Loading.gif";
+import LoaderGif from "../../../assets/loading.gif";
 import { Pane } from "evergreen-ui";
 
 function Loader(props) {
