@@ -5,7 +5,6 @@ import LadderHeader from "../LadderHeader/LadderHeader";
 
 function GrandmasterPanel(props) {
 	const { currentSeason, selectedIndex } = props;
-	console.log(props);
 	return (
 		<Pane
 			key={99}

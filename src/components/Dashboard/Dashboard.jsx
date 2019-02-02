@@ -26,11 +26,9 @@ class Dashboard extends React.Component {
 		this.displayProperBestRankIcon = this.displayProperBestRankIcon.bind(
 			this
 		);
-		console.log(this.state);
 	}
 
 	componentDidMount() {
-		console.log("CDM");
 		const token = localStorage.getItem("token");
 		const { profileId, realmId, regionId } = this.props.match.params;
 		request("eu", token)
@@ -110,55 +108,67 @@ class Dashboard extends React.Component {
 		const { data, error, loading } = this.state;
 
 		return (
-			<div>
+			<React.Fragment>
 				{loading ? (
 					<Loader />
 				) : (
-					<React.Fragment>
-						<Pane
-							height="90vh"
-							overflow="hidden"
-							display="grid"
-							gridTemplateColumns="29.5% 70.5%"
-							width={"100vw"}
-							padding={20}
-							key={1}
-						>
-							<Avatar
-								src={data.summary.portrait}
-								alt="profile_portrait"
-								name={data.summary.displayName}
-								size={100}
-								marginLeft={50}
-							/>
-							<CampaignHighlight
-								data={data.campaign}
-								slide={this.state.campaignSlider}
-								changeSlide={this.changeCampaignSlide}
-							/>
-							<Pane
-								display="grid"
-								gridTemplateColumns="30% 70%"
-								width={"100vw"}
-								height={"62.2vh"}
-								marginTop={"1rem"}
-							>
-								<BasicInfo
-									displayProperBestRankIcon={
-										this.displayProperBestRankIcon
-									}
-									raceIconStyle={this.raceIconStyle}
-									displayName={data.summary.displayName}
-								/>
-								<CurrentSeasonHighlight
-									career={this.state.data.career}
-									swarmLevels={this.state.data.swarmLevels}
-								/>
+					<div>
+						{error ? (
+							<Pane height={"90vh"}>
+								<ErrorMessage error={error.toString()} />
 							</Pane>
-						</Pane>
-					</React.Fragment>
+						) : (
+							<React.Fragment>
+								<Pane
+									height="90vh"
+									overflow="hidden"
+									display="grid"
+									gridTemplateColumns="29.5% 70.5%"
+									width={"100vw"}
+									padding={20}
+									key={1}
+								>
+									<Avatar
+										src={data.summary.portrait}
+										alt="profile_portrait"
+										name={data.summary.displayName}
+										size={100}
+										marginLeft={50}
+									/>
+									<CampaignHighlight
+										data={data.campaign}
+										slide={this.state.campaignSlider}
+										changeSlide={this.changeCampaignSlide}
+									/>
+									<Pane
+										display="grid"
+										gridTemplateColumns="30% 70%"
+										width={"100vw"}
+										height={"62.2vh"}
+										marginTop={"1rem"}
+									>
+										<BasicInfo
+											displayProperBestRankIcon={
+												this.displayProperBestRankIcon
+											}
+											raceIconStyle={this.raceIconStyle}
+											displayName={
+												data.summary.displayName
+											}
+										/>
+										<CurrentSeasonHighlight
+											career={this.state.data.career}
+											swarmLevels={
+												this.state.data.swarmLevels
+											}
+										/>
+									</Pane>
+								</Pane>
+							</React.Fragment>
+						)}
+					</div>
 				)}
-			</div>
+			</React.Fragment>
 		);
 	}
 }
