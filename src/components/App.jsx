@@ -52,13 +52,8 @@ class App extends React.Component {
 						)}
 					/>
 					<Route
-						exact
-						path="/dashboard"
-						component={DataProvider(
-							Dashboard,
-							region,
-							`profile/${regionId}/${realmId}/${profileId}`
-						)}
+						path="/dashboard/:regionId/:realmId/:profileId/:flag"
+						component={Dashboard}
 					/>
 					<Route
 						exact
