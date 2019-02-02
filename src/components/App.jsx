@@ -52,7 +52,7 @@ class App extends React.Component {
 						)}
 					/>
 					<Route
-						path="/dashboard/:regionId/:realmId/:profileId"
+						path="/dashboard/:regionId/:realmId/:profileId/:flag"
 						component={Dashboard}
 					/>
 					<Route

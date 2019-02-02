@@ -14,7 +14,7 @@ class LadderTable extends React.PureComponent {
 			realmId = localStorage.getItem("realmId"),
 			playerId = player.teamMembers[0].id;
 		this.props.history.push(
-			`/dashboard/${regionId}/${realmId}/${playerId}`
+			`/dashboard/${regionId}/${realmId}/${playerId}/2`
 		);
 	}
 

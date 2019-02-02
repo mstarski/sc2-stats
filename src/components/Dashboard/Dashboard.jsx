@@ -106,7 +106,7 @@ class Dashboard extends React.Component {
 
 	render() {
 		const { data, error, loading } = this.state;
-
+		console.log(data);
 		return (
 			<React.Fragment>
 				{loading ? (
@@ -155,6 +155,7 @@ class Dashboard extends React.Component {
 											displayName={
 												data.summary.displayName
 											}
+											flag={this.props.match.params.flag}
 										/>
 										<CurrentSeasonHighlight
 											career={this.state.data.career}

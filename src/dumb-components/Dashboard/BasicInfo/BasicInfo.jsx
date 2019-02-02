@@ -5,6 +5,7 @@ import raceLogos from "../../../utilities/raceLogos";
 function BasicInfo(props) {
 	const { data } = props;
 
+	console.log(props);
 	return (
 		<Pane marginLeft={30} marginTop={20}>
 			<Heading is={"h2"} size={900}>
@@ -21,7 +22,7 @@ function BasicInfo(props) {
 				{props.displayName}
 			</Heading>
 			<Text size={300} marginLeft="4rem">
-				{localStorage.getItem("battletag")}
+				{props.flag === "1" ? localStorage.getItem("battletag") : null}
 			</Text>
 			<Heading is={"h3"} marginTop={20}>
 				Best 1v1 Rank
