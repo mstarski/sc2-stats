@@ -1,28 +1,21 @@
 import React from "react";
 import { Table } from "evergreen-ui";
-import PlayerPreview from "../PlayerPreview/PlayerPreview";
 import PlayerCell from "../PlayerCell/PlayerCell";
+import { withRouter } from "react-router-dom";
 
 class LadderTable extends React.PureComponent {
 	constructor(props) {
 		super(props);
-		this.state = {
-			dialogIsShown: false,
-			highlightedPlayerData: {},
-		};
-		this.highlightPlayer = this.highlightPlayer.bind(this);
-		this.closeDialog = this.closeDialog.bind(this);
+		this.showPlayerStats = this.showPlayerStats.bind(this);
 	}
 
-	highlightPlayer(playerData) {
-		this.setState({
-			dialogIsShown: true,
-			highlightedPlayer: playerData.teamMembers[0].id,
-		});
-	}
-
-	closeDialog() {
-		this.setState({ dialogIsShown: false });
+	showPlayerStats(player) {
+		const regionId = localStorage.getItem("regionId"),
+			realmId = localStorage.getItem("realmId"),
+			playerId = player.teamMembers[0].id;
+		this.props.history.push(
+			`/dashboard/${regionId}/${realmId}/${playerId}`
+		);
 	}
 
 	render() {
@@ -31,11 +24,6 @@ class LadderTable extends React.PureComponent {
 			<React.Fragment>
 				{tabIndex === selfIndex ? (
 					<React.Fragment>
-						<PlayerPreview
-							isShown={this.state.dialogIsShown}
-							onClose={this.closeDialog}
-							player={this.state.highlightedPlayer}
-						/>
 						<Table
 							width="100%"
 							gridColumn="1/4"
@@ -60,7 +48,7 @@ class LadderTable extends React.PureComponent {
 											key={index}
 											isSelectable
 											onSelect={() =>
-												this.highlightPlayer(player)
+												this.showPlayerStats(player)
 											}
 										>
 											<Table.TextCell>
@@ -97,4 +85,4 @@ class LadderTable extends React.PureComponent {
 	}
 }
 
-export default LadderTable;
+export default withRouter(LadderTable);

@@ -1,6 +1,7 @@
 //Packages
 import React from "react";
-import { Pane, Text, Heading, Avatar } from "evergreen-ui";
+import { Pane, Avatar } from "evergreen-ui";
+import request from "../../utilities/custom-axios";
 
 //Components
 import raceLogos from "../../utilities/raceLogos";
@@ -8,19 +9,39 @@ import CampaignHighlight from "../../dumb-components/Dashboard/CampaignHighlight
 import CurrentSeasonHighlight from "../../dumb-components/Dashboard/CurrentSeasonHighlight/CurrentSeasonHighlight";
 import Translator from "../../utilities/Translator";
 import BasicInfo from "../../dumb-components/Dashboard/BasicInfo/BasicInfo";
+import Loader from "../../dumb-components/Loader/Loader";
+import ErrorMessage from "../../dumb-components/ErrorMessage/ErrorMessage";
 
 class Dashboard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			campaignSlider: 0,
+			loading: true,
+			error: null,
+			data: null,
 		};
 		this.raceIconStyle = this.raceIconStyle.bind(this);
 		this.changeCampaignSlide = this.changeCampaignSlide.bind(this);
 		this.displayProperBestRankIcon = this.displayProperBestRankIcon.bind(
 			this
 		);
-		this.setSeasonsMainRace(props.data.career);
+		console.log(this.state);
+	}
+
+	componentDidMount() {
+		console.log("CDM");
+		const token = localStorage.getItem("token");
+		const { profileId, realmId, regionId } = this.props.match.params;
+		request("eu", token)
+			.get(`/profile/${regionId}/${realmId}/${profileId}`)
+			.then(response => {
+				this.setState({ data: response.data, loading: false });
+			})
+			.catch(error => {
+				this.setState({ error: error, loading: false });
+			})
+			.then(() => this.setSeasonsMainRace(this.state.data.career));
 	}
 
 	changeCampaignSlide(direction) {
@@ -58,8 +79,8 @@ class Dashboard extends React.Component {
 	}
 
 	displayProperBestRankIcon(type) {
-		const best1v1Rank = this.props.data.career.best1v1Finish.leagueName;
-		const bestTeamRank = this.props.data.career.bestTeamFinish.leagueName;
+		const best1v1Rank = this.state.data.career.best1v1Finish.leagueName;
+		const bestTeamRank = this.state.data.career.bestTeamFinish.leagueName;
 		const unrankedIcon = <Avatar size={90} margin={10} />;
 
 		if (type === "1v1") {
@@ -86,52 +107,57 @@ class Dashboard extends React.Component {
 	}
 
 	render() {
-		const { data } = this.props;
+		const { data, error, loading } = this.state;
+
 		return (
 			<div>
-				<React.Fragment>
-					<Pane
-						height="90vh"
-						overflow="hidden"
-						display="grid"
-						gridTemplateColumns="29.5% 70.5%"
-						width={"100vw"}
-						padding={20}
-						key={1}
-					>
-						<Avatar
-							src={data.summary.portrait}
-							alt="profile_portrait"
-							name={data.summary.displayName}
-							size={100}
-							marginLeft={50}
-						/>
-						<CampaignHighlight
-							data={data.campaign}
-							slide={this.state.campaignSlider}
-							changeSlide={this.changeCampaignSlide}
-						/>
+				{loading ? (
+					<Loader />
+				) : (
+					<React.Fragment>
 						<Pane
+							height="90vh"
+							overflow="hidden"
 							display="grid"
-							gridTemplateColumns="30% 70%"
+							gridTemplateColumns="29.5% 70.5%"
 							width={"100vw"}
-							height={"62.2vh"}
-							marginTop={"1rem"}
+							padding={20}
+							key={1}
 						>
-							<BasicInfo
-								displayProperBestRankIcon={
-									this.displayProperBestRankIcon
-								}
-								raceIconStyle={this.raceIconStyle}
-								displayName={data.summary.displayName}
+							<Avatar
+								src={data.summary.portrait}
+								alt="profile_portrait"
+								name={data.summary.displayName}
+								size={100}
+								marginLeft={50}
 							/>
-							<CurrentSeasonHighlight
-								career={this.props.data.career}
-								swarmLevels={this.props.data.swarmLevels}
+							<CampaignHighlight
+								data={data.campaign}
+								slide={this.state.campaignSlider}
+								changeSlide={this.changeCampaignSlide}
 							/>
+							<Pane
+								display="grid"
+								gridTemplateColumns="30% 70%"
+								width={"100vw"}
+								height={"62.2vh"}
+								marginTop={"1rem"}
+							>
+								<BasicInfo
+									displayProperBestRankIcon={
+										this.displayProperBestRankIcon
+									}
+									raceIconStyle={this.raceIconStyle}
+									displayName={data.summary.displayName}
+								/>
+								<CurrentSeasonHighlight
+									career={this.state.data.career}
+									swarmLevels={this.state.data.swarmLevels}
+								/>
+							</Pane>
 						</Pane>
-					</Pane>
-				</React.Fragment>
+					</React.Fragment>
+				)}
 			</div>
 		);
 	}

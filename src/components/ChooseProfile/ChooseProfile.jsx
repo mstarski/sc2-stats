@@ -24,7 +24,9 @@ class ChooseProfile extends React.Component {
 		Object.keys(params).map(param => {
 			localStorage.setItem(param, params[param]);
 		});
-		this.props.history.push("/dashboard");
+		this.props.history.push(
+			`/dashboard/${regionId}/${realmId}/${profileId}`
+		);
 	}
 
 	render() {
