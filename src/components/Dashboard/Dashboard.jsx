@@ -43,6 +43,13 @@ class Dashboard extends React.Component {
 			.then(() => this.setSeasonsMainRace(this.state.data.career));
 	}
 
+	//It is required to reload when changing from other than user player's dashboard back to the user one
+	componentDidUpdate(prevProps, prevState) {
+		if (prevProps.match.params.flag !== this.props.match.params.flag) {
+			window.location.reload();
+		}
+	}
+
 	changeCampaignSlide(direction) {
 		this.setState(state => ({
 			campaignSlider:
