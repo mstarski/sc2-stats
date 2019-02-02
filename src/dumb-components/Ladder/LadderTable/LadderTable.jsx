@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "evergreen-ui";
-import LadderDialog from "../LadderDialog/LadderDialog";
+import PlayerPreview from "../PlayerPreview/PlayerPreview";
 import PlayerCell from "../PlayerCell/PlayerCell";
 
 class LadderTable extends React.PureComponent {
@@ -31,7 +31,7 @@ class LadderTable extends React.PureComponent {
 			<React.Fragment>
 				{tabIndex === selfIndex ? (
 					<React.Fragment>
-						<LadderDialog
+						<PlayerPreview
 							isShown={this.state.dialogIsShown}
 							onClose={this.closeDialog}
 							player={this.state.highlightedPlayer}

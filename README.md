@@ -12,3 +12,4 @@
 -   Fix earned achievements display
 -   Add ESLint
 -   Try decorators instead of standard hocsw
+-   Handle situation when grandmaster ladder is not yet open
