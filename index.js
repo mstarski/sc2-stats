@@ -91,6 +91,7 @@ ipcMain.on("auth", function(event) {
 				message:
 					"Please log in to the battle.net service and try again",
 				title: "Login required",
+				buttons: ["OK"],
 			});
 		});
 	authWindow = null;
