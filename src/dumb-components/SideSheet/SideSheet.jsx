@@ -27,7 +27,9 @@ class SideSheetComponent extends React.Component {
 			profileId = localStorage.getItem("profileId");
 		return {
 			profileSummary: () =>
-				this.navigate(`/dashboard/${regionId}/${realmId}/${profileId}`),
+				this.navigate(
+					`/dashboard/${regionId}/${realmId}/${profileId}/1`
+				),
 			changeProfile: () => this.navigate("/choose-profile"),
 			logout: () => this.navigate("/login", localStorage.clear()),
 			achievements: () => this.navigate("/achievements"),

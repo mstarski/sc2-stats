@@ -20,6 +20,7 @@ class Dashboard extends React.Component {
 			loading: true,
 			error: null,
 			data: null,
+			favRace: null,
 		};
 		this.raceIconStyle = this.raceIconStyle.bind(this);
 		this.changeCampaignSlide = this.changeCampaignSlide.bind(this);
@@ -63,12 +64,10 @@ class Dashboard extends React.Component {
 				result = race;
 			}
 		});
-		localStorage.setItem("main_race", result);
-		return result;
+		this.setState({ favRace: result });
 	}
 
-	raceIconStyle() {
-		const race = localStorage.getItem("main_race");
+	raceIconStyle(race) {
 		return {
 			width: raceLogos[race].size[0],
 			height: raceLogos[race].size[1],
@@ -106,7 +105,6 @@ class Dashboard extends React.Component {
 
 	render() {
 		const { data, error, loading } = this.state;
-		console.log(data);
 		return (
 			<React.Fragment>
 				{loading ? (
@@ -155,6 +153,7 @@ class Dashboard extends React.Component {
 											displayName={
 												data.summary.displayName
 											}
+											favRace={this.state.favRace}
 											flag={this.props.match.params.flag}
 										/>
 										<CurrentSeasonHighlight

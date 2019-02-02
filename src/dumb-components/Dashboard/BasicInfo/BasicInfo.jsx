@@ -3,20 +3,20 @@ import { Pane, Heading, Text, Avatar } from "evergreen-ui";
 import raceLogos from "../../../utilities/raceLogos";
 
 function BasicInfo(props) {
-	const { data } = props;
-
-	console.log(props);
 	return (
 		<Pane marginLeft={30} marginTop={20}>
 			<Heading is={"h2"} size={900}>
-				{localStorage.getItem("main_race") !== "null" ? (
+				{props.favRace ? (
 					<img
-						style={props.raceIconStyle()}
-						src={raceLogos[localStorage.getItem("main_race")].logo}
+						style={props.raceIconStyle(props.favRace)}
+						src={raceLogos[props.favRace].logo}
 						alt="race_logo"
 					/>
 				) : (
-					<Avatar size={50} style={props.raceIconStyle()} />
+					<Avatar
+						size={50}
+						style={props.raceIconStyle(props.favRace)}
+					/>
 				)}
 
 				{props.displayName}
