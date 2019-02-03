@@ -59,7 +59,7 @@ function CurrentSeasonHighlight(props) {
 						{currentTeam ? (
 							<img
 								style={assetProperties}
-								src={current1v1}
+								src={currentTeam}
 								alt="1v1 League"
 							/>
 						) : (
