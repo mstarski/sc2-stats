@@ -7,8 +7,10 @@ function GrandmasterTab(props) {
 		<SidebarTab
 			key={99}
 			id={99}
-			onSelect={() => setIndex(currentSeason[0].ladder.length)}
-			isSelected={currentSeason[0].ladder.length === props.selectedIndex}
+			onSelect={() => setIndex(currentSeason[0].ladder.length + 1)}
+			isSelected={
+				currentSeason[0].ladder.length + 1 === props.selectedIndex
+			}
 			aria-controls={`panel-grandmaster`}
 		>
 			Grandmaster

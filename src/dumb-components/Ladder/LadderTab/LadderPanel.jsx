@@ -18,9 +18,9 @@ function LadderPanel(props) {
 		profileId = localStorage.getItem("profileId");
 
 	//Prevent from loading grandmaster ladder before selecting it
-	//currentSeason[0].ladder.length is the grandmaster league's index
+	//currentSeason[0].ladder.length + 1 is the grandmaster league's index
 	const GrandMasterPanel =
-		selectedIndex === currentSeason[0].ladder.length
+		selectedIndex === currentSeason[0].ladder.length + 1
 			? DataProvider(
 					GrandmasterPanel,
 					region,
@@ -34,6 +34,7 @@ function LadderPanel(props) {
 			<Pane overflow="scroll" padding={16} background="tint1" flex="1">
 				{currentSeason[0].ladder.map((ladder, index) => {
 					if (ladder.league === "GRANDMASTER") setGrandmaster();
+					console.log(index === selectedIndex);
 					const LadderView = DataProvider(
 						LadderPreview,
 						region,
