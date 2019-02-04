@@ -32,35 +32,38 @@ function LadderPanel(props) {
 	return (
 		<React.Fragment>
 			<Pane overflow="scroll" padding={16} background="tint1" flex="1">
-				{currentSeason[0].ladder.map((ladder, index) => {
-					if (ladder.league === "GRANDMASTER") setGrandmaster();
-					console.log(index === selectedIndex);
-					const LadderView = DataProvider(
-						LadderPreview,
-						region,
-						`profile/${regionId}/${realmId}/${profileId}/ladder/${
-							ladder.ladderId
-						}`,
-						{
-							...ladder,
-							highlightPlayer,
-							tabIndex: selectedIndex,
-							selfIndex: index,
-						}
-					);
-					return (
-						<Pane
-							key={ladder.ladderId}
-							id={`panel-${ladder.ladderName}`}
-							role="tabpanel"
-							aria-labelledby={ladder.ladderName}
-							aria-hidden={index !== selectedIndex}
-							display={index === selectedIndex ? "block" : "none"}
-						>
-							<LadderView />
-						</Pane>
-					);
-				})}
+				{currentSeason.map(entry =>
+					entry.ladder.map((ladder, index) => {
+						if (ladder.league === "GRANDMASTER") setGrandmaster();
+						const LadderView = DataProvider(
+							LadderPreview,
+							region,
+							`profile/${regionId}/${realmId}/${profileId}/ladder/${
+								ladder.ladderId
+							}`,
+							{
+								...ladder,
+								highlightPlayer,
+								tabIndex: selectedIndex,
+								selfIndex: index,
+							}
+						);
+						return (
+							<Pane
+								key={ladder.ladderId}
+								id={`panel-${ladder.ladderName}`}
+								role="tabpanel"
+								aria-labelledby={ladder.ladderName}
+								aria-hidden={index !== selectedIndex}
+								display={
+									index === selectedIndex ? "block" : "none"
+								}
+							>
+								<LadderView />
+							</Pane>
+						);
+					})
+				)}
 				{isGrandmaster ? null : <GrandMasterPanel />}
 			</Pane>
 		</React.Fragment>
