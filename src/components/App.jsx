@@ -11,6 +11,7 @@ import DataProvider from "../utilities/DataProvider";
 import Dashboard from "./Dashboard/Dashboard";
 import Achievements from "./Achievements/Achievements";
 import Ladder from "./Ladder/Ladder";
+import Statistics from "./Statistics/Statistics";
 
 class App extends React.Component {
 	constructor(props) {
@@ -72,6 +73,10 @@ class App extends React.Component {
 							region,
 							`legacy/profile/${regionId}/${realmId}/${profileId}/ladders`
 						)}
+					/>
+					<Route
+						path="/statistics/:regionId/:realmId/:profileId/:flag"
+						component={Statistics}
 					/>
 					<Redirect to="/login" />
 				</Switch>

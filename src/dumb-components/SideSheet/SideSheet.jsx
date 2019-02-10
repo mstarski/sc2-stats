@@ -34,6 +34,10 @@ class SideSheetComponent extends React.Component {
 			logout: () => this.navigate("/login", localStorage.clear()),
 			achievements: () => this.navigate("/achievements"),
 			ladder: () => this.navigate("/ladder"),
+			statistics: () =>
+				this.navigate(
+					`/statistics/${regionId}/${realmId}/${profileId}/1`
+				),
 		};
 	}
 
