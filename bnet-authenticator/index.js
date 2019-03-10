@@ -22,21 +22,17 @@ passport.use(
 			region: region,
 		},
 		function(accessToken, refreshToken, profile, done) {
-			user = profile;
 			return done(null, profile);
 		}
 	)
 );
 
 app.get("/", (req, res) => {
-	if (!user) {
-		res.json({
-			user: "none",
-		});
+	const auth_result = req.query.successful.toString();
+	if (auth_result) {
+		res.send("You can now close this window");
 	} else {
-		res.json({
-			...user,
-		});
+		res.send("Whoops, something went wrong");
 	}
 });
 
@@ -54,7 +50,11 @@ app.get(
 		TCPSocket.connect(31337, "127.0.0.1", function() {
 			console.log("Connected to the client, here's your code: ");
 			TCPSocket.write(user_code);
+			TCPSocket.destroy();
 		});
+		TCPSocket.on("close", () =>
+			console.log("Authenticator socket closed.")
+		);
 		res.redirect("/?successful=true");
 	}
 );

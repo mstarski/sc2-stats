@@ -70,7 +70,8 @@ ipcMain.on("login", function(event, arg) {
 		socket.on("data", async function(data) {
 			console.log("Recieved from the client: " + data);
 			const decoded_data = await jwt.verify(data.toString(), JWT_SECRET);
-			event.sender.send("auth-complete", decoded_data);
+			await event.sender.send("auth-complete", decoded_data);
+			TCPServer.close(console.log("Server closed."));
 		});
 	});
 	TCPServer.listen(31337, "127.0.0.1");
