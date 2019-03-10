@@ -8,7 +8,7 @@
 
 -   Write a good documentation
 -   Implement search logic throughout the application
--   Implement team ladder preview (and a situation when one has more then one 1v1 ladder)
+-   Implement team ladder preview (Display every member nickname instead of the first one)
 -   Fix earned achievements display
 -   Add ESLint
 -   Try decorators instead of standard hocs

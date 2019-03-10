@@ -1,27 +1,15 @@
-const { app, BrowserWindow, ipcMain, dialog } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const { resolve } = require("path");
+const net = require("net");
+const jwt = require("jsonwebtoken");
+const { JWT_SECRET } = require("./bnet-authenticator/local/config");
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
-//Execute Javascript inside given window
-function javascript(window, command) {
-	return new Promise((resolve, reject) => {
-		let response;
-		window.webContents.executeJavaScript(command, function(result) {
-			try {
-				response = JSON.parse(result);
-				resolve(response);
-			} catch (e) {
-				reject(e);
-			}
-		});
-	});
-}
-
 function createWindow() {
 	// Create the browser window.
-	win = new BrowserWindow({ width: 1024, height: 674, resizable: false });
+	win = new BrowserWindow({ width: 1024, height: 768, resizable: false });
 
 	// and load the index.html of the app.
 	win.loadFile(resolve(__dirname, "dist/index.html"));
@@ -77,22 +65,15 @@ app.on("activate", () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-//Authentication handler
-ipcMain.on("auth", function(event) {
-	authWindow = new BrowserWindow({ width: 400, height: 300 });
-	authWindow.loadURL("http://localhost:3000/auth/bnet");
-	javascript(authWindow, `document.querySelector('body').textContent`)
-		.then(response => {
-			event.sender.send("auth-complete", response);
-		})
-		.catch(error => {
-			dialog.showMessageBox(authWindow, {
-				type: "info",
-				message:
-					"Please log in to the battle.net service and try again",
-				title: "Login required",
-				buttons: ["OK"],
-			});
+// Here we receive user data from the authenticator
+ipcMain.on("login", function(event, arg) {
+	const TCPServer = new net.createServer(socket => {
+		socket.on("data", async function(data) {
+			console.log("Recieved from the client: " + data);
+			const decoded_data = await jwt.verify(data.toString(), JWT_SECRET);
+			await event.sender.send("auth-complete", decoded_data); // After obtaining we send it straight to the react side
+			TCPServer.close(console.log("Server closed.")); // After job's done this is no longer necessary
 		});
-	authWindow = null;
+	});
+	TCPServer.listen(31337, "127.0.0.1");
 });

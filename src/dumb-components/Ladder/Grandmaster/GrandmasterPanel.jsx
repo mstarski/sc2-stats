@@ -11,7 +11,7 @@ function GrandmasterPanel(props) {
 			id={`panel-grandmaster`}
 			role="tabpanel"
 			aria-labelledby={"Grandmaster"}
-			aria-hidden={currentSeason[0].ladder.length !== selectedIndex}
+			aria-hidden={currentSeason[0].ladder.length + 1 !== selectedIndex}
 		>
 			<Pane
 				display="grid"
