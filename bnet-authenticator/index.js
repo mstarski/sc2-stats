@@ -1,10 +1,10 @@
 const app = require("express")();
 const passport = require("passport");
 const BnetStrategy = require("passport-bnet").Strategy;
-const fs = require("fs");
 const http = require("http");
-
 const config = require("./local/config");
+
+
 
 const port = 3000;
 const BNET_ID = config.BNET_ID;
@@ -51,8 +51,7 @@ app.get(
 		session: false,
 	}),
 	function(req, res) {
-		console.log("SUCCESSFUL LOGIN");
-		console.log(req.profile);
+		console.log(res.req.user);
 		res.redirect("/?successful=true");
 	}
 );

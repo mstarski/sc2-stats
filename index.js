@@ -1,23 +1,9 @@
-const { app, BrowserWindow, ipcMain, dialog } = require("electron");
+const { app, BrowserWindow } = require("electron");
 const { resolve } = require("path");
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
-//Execute Javascript inside given window
-function javascript(window, command) {
-	return new Promise((resolve, reject) => {
-		let response;
-		window.webContents.executeJavaScript(command, function(result) {
-			try {
-				response = JSON.parse(result);
-				resolve(response);
-			} catch (e) {
-				reject(e);
-			}
-		});
-	});
-}
 
 function createWindow() {
 	// Create the browser window.
@@ -76,23 +62,3 @@ app.on("activate", () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-
-//Authentication handler
-ipcMain.on("auth", function(event) {
-	authWindow = new BrowserWindow({ width: 400, height: 300 });
-	authWindow.loadURL("http://localhost:3000/auth/bnet");
-	javascript(authWindow, `document.querySelector('body').textContent`)
-		.then(response => {
-			event.sender.send("auth-complete", response);
-		})
-		.catch(error => {
-			dialog.showMessageBox(authWindow, {
-				type: "info",
-				message:
-					"Please log in to the battle.net service and try again",
-				title: "Login required",
-				buttons: ["OK"],
-			});
-		});
-	authWindow = null;
-});

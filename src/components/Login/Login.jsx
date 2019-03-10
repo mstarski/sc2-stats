@@ -2,7 +2,6 @@ import React from "react";
 import Background from "../Background/Background";
 import LoginBg from "../../../assets/login-bg.jpg";
 import BattlenetIcon from "../../../assets/battlenet-icon.png";
-const { ipcRenderer } = window.require("electron");
 
 class Login extends React.Component {
 	constructor(props) {
@@ -11,7 +10,9 @@ class Login extends React.Component {
 	}
 
 	submitHandler() {
-		ipcRenderer.send("auth");
+		window
+			.require("electron")
+			.shell.openExternal("http://localhost:3000/auth/bnet");
 	}
 
 	render() {
