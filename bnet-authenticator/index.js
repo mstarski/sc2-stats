@@ -3,12 +3,10 @@ const passport = require("passport");
 const BnetStrategy = require("passport-bnet").Strategy;
 const http = require("http");
 const config = require("./local/config");
-
-
+const jwt = require("jsonwebtoken");
 
 const port = 3000;
-const BNET_ID = config.BNET_ID;
-const BNET_SECRET = config.BNET_SECRET;
+const { BNET_ID, BNET_SECRET, JWT_SECRET } = config;
 const region = "eu";
 let user = null;
 
@@ -51,7 +49,8 @@ app.get(
 		session: false,
 	}),
 	function(req, res) {
-		console.log(res.req.user);
+		const user_code = jwt.sign(res.req.user, JWT_SECRET);
+		console.log(user_code);
 		res.redirect("/?successful=true");
 	}
 );
