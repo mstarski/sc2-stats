@@ -26,7 +26,7 @@ passport.use(
 		}
 	)
 );
-
+// Here's the result of the authentication process being displayed
 app.get("/", (req, res) => {
 	const auth_result = req.query.successful.toString();
 	if (auth_result) {
@@ -36,8 +36,10 @@ app.get("/", (req, res) => {
 	}
 });
 
+// Authentication process starts here - it is being handled by the passport library
 app.get("/auth/bnet", passport.authenticate("bnet"));
 
+// Here we check wether auth process succeeded
 app.get(
 	"/auth/bnet/callback",
 	passport.authenticate("bnet", {
@@ -46,12 +48,13 @@ app.get(
 	}),
 	function(req, res) {
 		const user_code = jwt.sign(res.req.user, JWT_SECRET);
-		const TCPSocket = net.Socket();
+		const TCPSocket = net.Socket(); // We create a socket for the communication with electron client
 		TCPSocket.connect(31337, "127.0.0.1", function() {
 			console.log("Connected to the client, here's your code: ");
-			TCPSocket.write(user_code);
+			TCPSocket.write(user_code); // Sending the necessary code as the JWT string
 			TCPSocket.destroy();
 		});
+		// After the work's done close the socket
 		TCPSocket.on("close", () =>
 			console.log("Authenticator socket closed.")
 		);

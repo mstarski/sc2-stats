@@ -65,13 +65,14 @@ app.on("activate", () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
+// Here we receive user data from the authenticator
 ipcMain.on("login", function(event, arg) {
 	const TCPServer = new net.createServer(socket => {
 		socket.on("data", async function(data) {
 			console.log("Recieved from the client: " + data);
 			const decoded_data = await jwt.verify(data.toString(), JWT_SECRET);
-			await event.sender.send("auth-complete", decoded_data);
-			TCPServer.close(console.log("Server closed."));
+			await event.sender.send("auth-complete", decoded_data); // After obtaining we send it straight to the react side
+			TCPServer.close(console.log("Server closed.")); // After job's done this is no longer necessary
 		});
 	});
 	TCPServer.listen(31337, "127.0.0.1");
