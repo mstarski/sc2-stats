@@ -1,3 +1,5 @@
+.PHONY: install fonts start build watch clean auth
+
 UNAME := $(shell uname)
 
 ifeq ($(UNAME), Darwin)
