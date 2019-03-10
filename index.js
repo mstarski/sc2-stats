@@ -1,6 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const { resolve } = require("path");
 const net = require("net");
+const jwt = require("jsonwebtoken");
+const { JWT_SECRET } = require("./bnet-authenticator/local/config");
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
@@ -63,11 +65,12 @@ app.on("activate", () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-ipcMain.on("login", function() {
-	//TODO Capture the freaking user_code
+ipcMain.on("login", function(event, arg) {
 	const TCPServer = new net.createServer(socket => {
-		socket.on("data", function(data) {
+		socket.on("data", async function(data) {
 			console.log("Recieved from the client: " + data);
+			const decoded_data = await jwt.verify(data.toString(), JWT_SECRET);
+			event.sender.send("auth-complete", decoded_data);
 		});
 	});
 	TCPServer.listen(31337, "127.0.0.1");
