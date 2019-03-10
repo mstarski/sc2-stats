@@ -4,11 +4,11 @@ const BnetStrategy = require("passport-bnet").Strategy;
 const http = require("http");
 const config = require("./local/config");
 const jwt = require("jsonwebtoken");
+const net = require("net");
 
 const port = 3000;
 const { BNET_ID, BNET_SECRET, JWT_SECRET } = config;
 const region = "eu";
-let user = null;
 
 app.use(passport.initialize());
 
@@ -50,7 +50,11 @@ app.get(
 	}),
 	function(req, res) {
 		const user_code = jwt.sign(res.req.user, JWT_SECRET);
-		console.log(user_code);
+		const TCPSocket = net.Socket();
+		TCPSocket.connect(31337, "127.0.0.1", function() {
+			console.log("Connected to the client, here's your code: ");
+			TCPSocket.write(user_code);
+		});
 		res.redirect("/?successful=true");
 	}
 );

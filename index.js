@@ -65,4 +65,10 @@ app.on("activate", () => {
 
 ipcMain.on("login", function() {
 	//TODO Capture the freaking user_code
+	const TCPServer = new net.createServer(socket => {
+		socket.on("data", function(data) {
+			console.log("Recieved from the client: " + data);
+		});
+	});
+	TCPServer.listen(31337, "127.0.0.1");
 });
