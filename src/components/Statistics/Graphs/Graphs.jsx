@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import WinRatioGraph from "./WinRatioGraph/WinRatioGraph";
+import MatchHistoryGraph from "./MatchHistoryGraph/MatchHistoryGraph";
 
 function Graphs(props) {
 	const [matches, setMatches] = useState([]);
@@ -8,11 +8,11 @@ function Graphs(props) {
 		const formattedMatches = matchHistory.map(match => ({
 			map: match.map,
 			result: match.decision === "Win" ? 1 : 0,
-			date: new Date(match.date),
+			date: new Date(match.date * 1000).toDateString(),
 		}));
 		setMatches(formattedMatches);
 	}, []);
-	return <div className="graphs">{WinRatioGraph(matches)}</div>;
+	return <div className="graphs">{MatchHistoryGraph(matches)}</div>;
 }
 
 export default Graphs;
