@@ -2,12 +2,14 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { Pane, Tablist, SidebarTab, Heading } from "evergreen-ui";
 import StatisticsPanel from "../Statistics/StatisticsPanel/StatisticsPanel";
+import request from "../../utilities/custom-axios";
+import global from "../../utilities/globalVariables";
 
 class Statistics extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			tabs: ["Matchups", "Match History"],
+			tabs: ["Matchups", "Graphs"],
 			selectedIndex: 0,
 		};
 		this.handleTabChange = this.handleTabChange.bind(this);
@@ -20,7 +22,6 @@ class Statistics extends React.Component {
 	}
 
 	render() {
-		console.log(this.props);
 		return (
 			<React.Fragment>
 				<Heading is={"h2"} size={800} padding={"1rem"}>
@@ -39,7 +40,10 @@ class Statistics extends React.Component {
 							</SidebarTab>
 						))}
 					</Tablist>
-					<StatisticsPanel selectedIndex={this.state.selectedIndex} />
+					<StatisticsPanel
+						matchHistory={this.props.data.matches}
+						selectedIndex={this.state.selectedIndex}
+					/>
 				</Pane>
 			</React.Fragment>
 		);

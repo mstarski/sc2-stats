@@ -76,7 +76,11 @@ class App extends React.Component {
 					/>
 					<Route
 						path="/statistics/:regionId/:realmId/:profileId/:flag"
-						component={Statistics}
+						component={DataProvider(
+							Statistics,
+							region,
+							`legacy/profile/${regionId}/${realmId}/${profileId}/matches`
+						)}
 					/>
 					<Redirect to="/login" />
 				</Switch>
