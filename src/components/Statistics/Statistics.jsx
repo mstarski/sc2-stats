@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { Pane, Tablist, SidebarTab, Heading } from "evergreen-ui";
+import StatisticsPanel from "../Statistics/StatisticsPanel/StatisticsPanel";
 
 class Statistics extends React.Component {
 	constructor(props) {
@@ -38,6 +39,7 @@ class Statistics extends React.Component {
 							</SidebarTab>
 						))}
 					</Tablist>
+					<StatisticsPanel selectedIndex={this.state.selectedIndex} />
 				</Pane>
 			</React.Fragment>
 		);
