@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, Text, Pane } from "evergreen-ui";
+import { Heading, Text, Pane, Button } from "evergreen-ui";
 import Lurker from "../../../assets/Lurker.gif";
 
 function ErrorMessage(props) {
@@ -18,6 +18,13 @@ function ErrorMessage(props) {
 				Oops - something went wrong !
 			</Heading>
 			<Text>{props.error}</Text>
+			<Button
+				marginTop={"1rem"}
+				onClick={() => location.reload()}
+				appearance="primary"
+			>
+				Try again
+			</Button>
 		</Pane>
 	);
 }
