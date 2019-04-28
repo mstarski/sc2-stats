@@ -2,8 +2,6 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { Pane, Tablist, SidebarTab, Heading } from "evergreen-ui";
 import StatisticsPanel from "../Statistics/StatisticsPanel/StatisticsPanel";
-import request from "../../utilities/custom-axios";
-import global from "../../utilities/globalVariables";
 
 class Statistics extends React.Component {
 	constructor(props) {

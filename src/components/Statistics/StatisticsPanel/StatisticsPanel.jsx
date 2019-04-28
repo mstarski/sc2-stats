@@ -1,12 +1,11 @@
 import React from "react";
-import MatchHistory from "../MatchHistory/MatchHistory";
 import Graphs from "../Graphs/Graphs";
 
 function StatisticsPanel(props) {
 	const Panels = {
-		MatchHistory: {
+		Matchups: {
 			index: 0,
-			component: <MatchHistory />,
+			component: null,
 		},
 		Graphs: {
 			index: 1,
