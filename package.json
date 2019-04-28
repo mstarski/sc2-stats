@@ -25,6 +25,7 @@
 		"axios": "^0.18.0",
 		"concurrently": "^4.1.0",
 		"electron-devtools-installer": "^2.2.4",
+		"eve": "^0.5.4",
 		"ever": "0.0.3",
 		"evergreen-ui": "^4.7.1",
 		"jsonwebtoken": "^8.5.0",

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import MatchHistoryGraph from "./MatchHistoryGraph/MatchHistoryGraph";
-import MatchupsGraphs from "../MatchupsGraphs/MatchupsGraph";
+import WinsPerMapGraph from "./WinsPerMapGraph/WinsPerMapGraph";
 
-const graphs = [MatchHistoryGraph, MatchupsGraphs];
+const graphs = [MatchHistoryGraph, WinsPerMapGraph];
 
 function Graphs(props) {
 	const [matches, setMatches] = useState([]); // Contains fetched info about games played
