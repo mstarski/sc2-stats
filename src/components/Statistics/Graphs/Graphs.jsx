@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MatchHistoryGraph from "./MatchHistoryGraph/MatchHistoryGraph";
 import WinsPerMapGraph from "./WinsPerMapGraph/WinsPerMapGraph";
 
-const graphs = [MatchHistoryGraph, WinsPerMapGraph];
+const graphs = [WinsPerMapGraph, MatchHistoryGraph];
 
 function Graphs(props) {
 	const [matches, setMatches] = useState([]); // Contains fetched info about games played
@@ -15,7 +15,7 @@ function Graphs(props) {
 		}));
 		setMatches(formattedMatches);
 	}, []);
-	console.log(props.graphIndex % graphs.length);
+	console.log(matches);
 	return (
 		<div className="graphs">
 			{graphs[props.graphIndex % graphs.length](matches)}

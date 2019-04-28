@@ -8,7 +8,7 @@ class Statistics extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			tabs: ["Matchups", "Graphs"],
+			tabs: ["General Info", "Graphs"],
 			selectedIndex: 0,
 			graphIndex: 0, //Passing down to the Graphs component
 		};

@@ -3,7 +3,7 @@ import Graphs from "../Graphs/Graphs";
 
 function StatisticsPanel(props) {
 	const Panels = {
-		Matchups: {
+		GeneralInfo: {
 			index: 0,
 			component: null,
 		},
