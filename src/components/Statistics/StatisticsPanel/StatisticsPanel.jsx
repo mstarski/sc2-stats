@@ -9,7 +9,12 @@ function StatisticsPanel(props) {
 		},
 		Graphs: {
 			index: 1,
-			component: <Graphs matchHistory={props.matchHistory} />,
+			component: (
+				<Graphs
+					graphIndex={props.graphIndex}
+					matchHistory={props.matchHistory}
+				/>
+			),
 		},
 	};
 

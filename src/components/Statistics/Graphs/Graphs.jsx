@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import MatchHistoryGraph from "./MatchHistoryGraph/MatchHistoryGraph";
+import MatchupsGraphs from "../MatchupsGraphs/MatchupsGraph";
 
-const graphs = [MatchHistoryGraph];
+const graphs = [MatchHistoryGraph, MatchupsGraphs];
 
 function Graphs(props) {
-	const [graphNumber, setGraphNumber] = useState(0); // Contains displayed graph's number
 	const [matches, setMatches] = useState([]); // Contains fetched info about games played
 	useEffect(() => {
 		const { matchHistory } = props;
@@ -15,7 +15,12 @@ function Graphs(props) {
 		}));
 		setMatches(formattedMatches);
 	}, []);
-	return <div className="graphs">{graphs[graphNumber](matches)}</div>;
+	console.log(props.graphIndex % graphs.length);
+	return (
+		<div className="graphs">
+			{graphs[props.graphIndex % graphs.length](matches)}
+		</div>
+	);
 }
 
 export default Graphs;
