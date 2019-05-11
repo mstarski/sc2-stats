@@ -13,7 +13,7 @@ class Statistics extends React.Component {
 			graphIndex: 0, //Passing down to the Graphs component
 		};
 		this.handleTabChange = this.handleTabChange.bind(this);
-		this.handleUserScroll = this.handleUserScroll.bind(this);
+		this.handleGraphTabChange = this.handleGraphTabChange.bind(this);
 	}
 
 	// Handle Scroll event and pass it down since it does not work at the lower level
@@ -24,23 +24,23 @@ class Statistics extends React.Component {
 		});
 	}
 
-	handleUserScroll(event) {
+	handleGraphTabChange(event, direction) {
 		this.setState(state => ({
-			graphIndex: state.graphIndex + 1,
+			graphIndex: state.graphIndex + 1 * (direction === "up" ? -1 : 1),
 		}));
 	}
 
 	componentDidMount() {
 		window.addEventListener(
 			"mousewheel",
-			debounce(event => this.handleUserScroll(event), 100)
+			debounce(event => this.handleGraphTabChange(event, "up"), 100)
 		);
 	}
 
 	componentWillUnmount() {
 		window.removeEventListener(
 			"mousewheel",
-			debounce(event => this.handleUserScroll(event), 80)
+			debounce(event => this.handleGraphTabChange(event), 80)
 		);
 	}
 
@@ -67,6 +67,7 @@ class Statistics extends React.Component {
 						graphIndex={this.state.graphIndex}
 						matchHistory={this.props.data.matches}
 						selectedIndex={this.state.selectedIndex}
+						graphTabChange={this.handleGraphTabChange}
 					/>
 				</Pane>
 			</React.Fragment>

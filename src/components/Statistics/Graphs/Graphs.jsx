@@ -20,15 +20,21 @@ function Graphs(props) {
 	console.log(matches);
 	return (
 		<Pane className="graphs" display="flex">
-			{graphs[props.graphIndex % graphs.length](matches)}
+			{graphs[Math.abs(props.graphIndex % graphs.length)](matches)}
 			<Pane
 				className="arrows"
 				display="flex"
 				flexFlow="column"
 				justifyContent="space-around"
 			>
-				<Icon cursor="pointer" className="arrow-up" icon="arrow-up" />
 				<Icon
+					onClick={() => props.graphTabChange("up")}
+					cursor="pointer"
+					className="arrow-up"
+					icon="arrow-up"
+				/>
+				<Icon
+					onClick={() => props.graphTabChange("down")}
 					cursor="pointer"
 					className="arrow-down"
 					icon="arrow-down"

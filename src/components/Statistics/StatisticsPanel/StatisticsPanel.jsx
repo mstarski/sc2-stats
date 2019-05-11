@@ -13,6 +13,7 @@ function StatisticsPanel(props) {
 				<Graphs
 					graphIndex={props.graphIndex}
 					matchHistory={props.matchHistory}
+					graphTabChange={props.graphTabChange}
 				/>
 			),
 		},
