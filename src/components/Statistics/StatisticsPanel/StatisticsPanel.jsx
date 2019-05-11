@@ -4,11 +4,11 @@ import Graphs from "../Graphs/Graphs";
 function StatisticsPanel(props) {
 	const Panels = {
 		GeneralInfo: {
-			index: 0,
+			index: 1,
 			component: null,
 		},
 		Graphs: {
-			index: 1,
+			index: 0, //testing only
 			component: (
 				<Graphs
 					graphIndex={props.graphIndex}

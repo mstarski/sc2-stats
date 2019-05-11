@@ -9,7 +9,7 @@ function WinsPerMapGraph(matches) {
 		if (typeof matches_info[map.map] !== "number") {
 			matches_info[map.map] = 0;
 		}
-		matches_info[map.map] += map.result;
+		matches_info[map.map] += map.Result;
 	});
 	Object.keys(matches_info).map(key => {
 		data.push({ name: key, value: matches_info[key] });

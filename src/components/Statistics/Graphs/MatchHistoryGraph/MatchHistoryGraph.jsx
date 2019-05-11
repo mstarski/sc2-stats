@@ -1,9 +1,9 @@
 import React from "react";
-import { LineChart, Line, XAxis, Tooltip } from "recharts";
-import { Heading } from "evergreen-ui";
+import { LineChart, Line, XAxis, Tooltip, Legend } from "recharts";
+import { Heading, Pane } from "evergreen-ui";
 
 const MatchHistoryGraph = data => (
-	<React.Fragment>
+	<Pane>
 		<Heading
 			textAlign="center"
 			marginBottom="2rem"
@@ -23,6 +23,7 @@ const MatchHistoryGraph = data => (
 				bottom: 5,
 			}}
 		>
+			<Legend />
 			<XAxis tick={false} dataKey="date" />
 			<Tooltip
 				formatter={(value, name, props) => [
@@ -32,12 +33,12 @@ const MatchHistoryGraph = data => (
 			/>
 			<Line
 				type="linear"
-				dataKey="result"
+				dataKey="Result"
 				stroke="#8884d8"
 				activeDot={{ r: 8 }}
 			/>
 		</LineChart>
-	</React.Fragment>
+	</Pane>
 );
 
 export default MatchHistoryGraph;

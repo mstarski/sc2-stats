@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Pane, Icon } from "evergreen-ui";
+
 import MatchHistoryGraph from "./MatchHistoryGraph/MatchHistoryGraph";
 import WinsPerMapGraph from "./WinsPerMapGraph/WinsPerMapGraph";
 
@@ -10,16 +12,29 @@ function Graphs(props) {
 		const { matchHistory } = props;
 		const formattedMatches = matchHistory.map(match => ({
 			map: match.map,
-			result: match.decision === "Win" ? 1 : 0,
+			Result: match.decision === "Win" ? 1 : 0,
 			date: new Date(match.date * 1000).toDateString(),
 		}));
 		setMatches(formattedMatches);
 	}, []);
 	console.log(matches);
 	return (
-		<div className="graphs">
+		<Pane className="graphs" display="flex">
 			{graphs[props.graphIndex % graphs.length](matches)}
-		</div>
+			<Pane
+				className="arrows"
+				display="flex"
+				flexFlow="column"
+				justifyContent="space-around"
+			>
+				<Icon cursor="pointer" className="arrow-up" icon="arrow-up" />
+				<Icon
+					cursor="pointer"
+					className="arrow-down"
+					icon="arrow-down"
+				/>
+			</Pane>
+		</Pane>
 	);
 }
 
