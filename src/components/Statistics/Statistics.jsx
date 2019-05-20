@@ -35,6 +35,12 @@ class Statistics extends React.Component {
 			"mousewheel",
 			debounce(event => this.handleGraphTabChange(event, "up"), 100)
 		);
+
+		window.addEventListener("keydown", event => {
+			if (event.keyCode === 40) this.handleGraphTabChange(event, "down");
+			else if (event.keyCode == 38)
+				this.handleGraphTabChange(event, "up");
+		});
 	}
 
 	componentWillUnmount() {
@@ -42,6 +48,7 @@ class Statistics extends React.Component {
 			"mousewheel",
 			debounce(event => this.handleGraphTabChange(event), 80)
 		);
+		window.removeEventListener("keydown");
 	}
 
 	render() {
