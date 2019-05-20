@@ -1,11 +1,21 @@
 import React from "react";
 import Graphs from "../Graphs/Graphs";
+import GeneralInfo from "../GeneralInfo/GeneralInfo";
+import DataProvider from "../../../utilities/DataProvider";
+import global from "../../../utilities/globalVariables";
 
 function StatisticsPanel(props) {
+	const { region, regionId, realmId, profileId } = global();
+	const GeneralInfoComponent = DataProvider(
+		GeneralInfo,
+		region,
+		`/profile/${regionId}/${realmId}/${profileId}`,
+		{ match_history: props.matchHistory }
+	);
 	const Panels = {
 		GeneralInfo: {
 			index: 0,
-			component: null,
+			component: <GeneralInfoComponent />,
 		},
 		Graphs: {
 			index: 1,

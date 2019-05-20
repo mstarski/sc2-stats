@@ -4,6 +4,7 @@ import { Pane, Icon } from "evergreen-ui";
 import MatchHistoryGraph from "./MatchHistoryGraph/MatchHistoryGraph";
 import WinsPerMapGraph from "./WinsPerMapGraph/WinsPerMapGraph";
 
+
 const graphs = [WinsPerMapGraph, MatchHistoryGraph];
 
 function Graphs(props) {
