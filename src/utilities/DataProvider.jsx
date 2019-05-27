@@ -5,6 +5,7 @@ import request from "../utilities/custom-axios";
 //Components
 import Loader from "../dumb-components/Loader/Loader";
 import ErrorMessage from "../dumb-components/ErrorMessage/ErrorMessage";
+import global from "../utilities/globalVariables";
 
 function DataProvider(Component, region, dataSource, props) {
 	return class DataProviderComponent extends React.Component {
@@ -23,7 +24,7 @@ function DataProvider(Component, region, dataSource, props) {
 			try {
 				var { data } = await request(
 					region,
-					localStorage.getItem("token")
+					global().token
 				)(dataSource);
 			} catch (error) {
 				await this.setState({

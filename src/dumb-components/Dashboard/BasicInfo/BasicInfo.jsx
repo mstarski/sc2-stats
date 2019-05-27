@@ -1,6 +1,7 @@
 import React from "react";
 import { Pane, Heading, Text, Avatar } from "evergreen-ui";
 import raceLogos from "../../../utilities/raceLogos";
+import global from "../../../utilities/globalVariables";
 
 function BasicInfo(props) {
 	return (
@@ -22,7 +23,7 @@ function BasicInfo(props) {
 				{props.displayName}
 			</Heading>
 			<Text size={300} marginLeft="4rem">
-				{props.flag === "1" ? localStorage.getItem("battletag") : null}
+				{props.flag === "1" ? global().battletag : null}
 			</Text>
 			<Heading is={"h3"} marginTop={20}>
 				Best 1v1 Rank

@@ -2,6 +2,7 @@ import React from "react";
 import { Table } from "evergreen-ui";
 import PlayerCell from "../PlayerCell/PlayerCell";
 import { withRouter } from "react-router-dom";
+import global from "../../../utilities/globalVariables";
 
 class LadderTable extends React.PureComponent {
 	constructor(props) {
@@ -10,9 +11,8 @@ class LadderTable extends React.PureComponent {
 	}
 
 	showPlayerStats(player) {
-		const regionId = localStorage.getItem("regionId"),
-			realmId = localStorage.getItem("realmId"),
-			playerId = player.teamMembers[0].id;
+		const { regionId, realmId } = global();
+		playerId = player.teamMembers[0].id;
 		this.props.history.push(
 			`/dashboard/${regionId}/${realmId}/${playerId}/2`
 		);

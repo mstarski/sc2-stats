@@ -2,6 +2,7 @@
 import React from "react";
 import { Pane, Avatar } from "evergreen-ui";
 import request from "../../utilities/custom-axios";
+import global from "../../utilities/globalVariables";
 
 //Components
 import raceLogos from "../../utilities/raceLogos";
@@ -30,7 +31,7 @@ class Dashboard extends React.Component {
 	}
 
 	componentDidMount() {
-		const token = localStorage.getItem("token");
+		const token = global().token;
 		const { profileId, realmId, regionId } = this.props.match.params;
 		request("eu", token)
 			.get(`/profile/${regionId}/${realmId}/${profileId}`)

@@ -3,6 +3,7 @@ import { SideSheet, Pane, Heading, Card, Button } from "evergreen-ui";
 import MenuIcon from "../MenuIcon/MenuIcon";
 import SidesheetContent from "./SidesheetContent";
 import { withRouter } from "react-router-dom";
+import global from "../../utilities/globalVariables";
 
 class SideSheetComponent extends React.Component {
 	constructor(props) {
@@ -22,9 +23,7 @@ class SideSheetComponent extends React.Component {
 	}
 
 	navigationHandlers() {
-		const regionId = localStorage.getItem("regionId"),
-			realmId = localStorage.getItem("realmId"),
-			profileId = localStorage.getItem("profileId");
+		const { regionId, realmId, profileId } = global();
 		return {
 			profileSummary: () =>
 				this.navigate(
