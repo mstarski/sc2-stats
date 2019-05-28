@@ -10,7 +10,7 @@ Avaliable features:
 * Achievements showcase
 * Profile informations and statistics
 
-TO BE IMPLEMENTED
+**TO BE IMPLEMENTED**
 * Replay analysis based on provided file
 ---
 
