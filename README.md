@@ -1,7 +1,17 @@
 # SC2 Stats
 
 ## Starcraft 2 statistics service
+Desktop application that lets you see your Starcraft II profile.
+Avaliable features:
+* Logging directly through battle.net authorization service no third-parties
+* Avaliable on all servers
+* Display current ladder and check other players statistics
+* Plots that display your current performance
+* Achievements showcase
+* Profile informations and statistics
 
+TO BE IMPLEMENTED
+* Replay analysis based on provided file
 ---
 
 ## TODO:
