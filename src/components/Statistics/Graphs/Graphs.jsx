@@ -4,7 +4,6 @@ import { Pane, Icon } from "evergreen-ui";
 import MatchHistoryGraph from "./MatchHistoryGraph/MatchHistoryGraph";
 import WinsPerMapGraph from "./WinsPerMapGraph/WinsPerMapGraph";
 
-
 const graphs = [WinsPerMapGraph, MatchHistoryGraph];
 
 function Graphs(props) {
@@ -18,7 +17,6 @@ function Graphs(props) {
 		}));
 		setMatches(formattedMatches);
 	}, []);
-	console.log(matches);
 	return (
 		<Pane className="graphs" display="flex">
 			{graphs[Math.abs(props.graphIndex % graphs.length)](matches)}
