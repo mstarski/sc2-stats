@@ -1,5 +1,7 @@
 # SC2 Stats
 
+# DUE TO THE RECENT TERMS OF USE CHANGES THAT BLIZZARD MADE TO THEIR API USAGE I WON'T BE CONTINUING TO DEVELOP THIS PROJECT.
+
 ## Starcraft 2 statistics service
 Desktop application that lets you see your Starcraft II profile.
 Avaliable features:
