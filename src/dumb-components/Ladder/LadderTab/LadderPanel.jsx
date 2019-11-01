@@ -3,6 +3,7 @@ import { Pane } from "evergreen-ui";
 import LadderPreview from "../LadderPreview/LadderPreview";
 import DataProvider from "../../../utilities/DataProvider";
 import GrandmasterPanel from "../Grandmaster/GrandmasterPanel";
+import global from "../../../utilities/globalVariables";
 
 function LadderPanel(props) {
 	const {
@@ -12,10 +13,8 @@ function LadderPanel(props) {
 		setGrandmaster,
 		isGrandmaster,
 	} = props;
-	const regionId = localStorage.getItem("regionId"),
-		region = localStorage.getItem("region"),
-		realmId = localStorage.getItem("realmId"),
-		profileId = localStorage.getItem("profileId");
+
+	const { regionId, region, realmId, profileId } = global();
 
 	//Prevent from loading grandmaster ladder before selecting it
 	//currentSeason[0].ladder.length + 1 is the grandmaster league's index

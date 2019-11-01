@@ -24,7 +24,7 @@ function SidesheetContent(props) {
 		},
 		statistics: {
 			label: "Statistics",
-			onSelect: () => {},
+			onSelect: () => handlers.statistics(),
 		},
 		replay_analysis: {
 			label: "Replay Analysis",

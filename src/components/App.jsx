@@ -11,6 +11,10 @@ import DataProvider from "../utilities/DataProvider";
 import Dashboard from "./Dashboard/Dashboard";
 import Achievements from "./Achievements/Achievements";
 import Ladder from "./Ladder/Ladder";
+import Statistics from "./Statistics/Statistics";
+
+//Utilities
+import global from "../utilities/globalVariables";
 
 class App extends React.Component {
 	constructor(props) {
@@ -27,11 +31,7 @@ class App extends React.Component {
 		});
 
 		const noHeaderRoutes = ["/choose-profile", "/login"];
-		const region = localStorage.getItem("region");
-		const id = localStorage.getItem("id");
-		const regionId = localStorage.getItem("regionId");
-		const profileId = localStorage.getItem("profileId");
-		const realmId = localStorage.getItem("realmId");
+		const { region, id, regionId, profileId, realmId } = global();
 
 		return (
 			<div style={{ width: "100%" }}>
@@ -47,7 +47,7 @@ class App extends React.Component {
 						path="/choose-profile"
 						component={DataProvider(
 							ChooseProfile,
-							"eu",
+							region,
 							`/player/${id}`
 						)}
 					/>
@@ -71,6 +71,14 @@ class App extends React.Component {
 							Ladder,
 							region,
 							`legacy/profile/${regionId}/${realmId}/${profileId}/ladders`
+						)}
+					/>
+					<Route
+						path="/statistics/:regionId/:realmId/:profileId/:flag"
+						component={DataProvider(
+							Statistics,
+							region,
+							`legacy/profile/${regionId}/${realmId}/${profileId}/matches`
 						)}
 					/>
 					<Redirect to="/login" />
